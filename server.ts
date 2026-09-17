@@ -4621,8 +4621,8 @@ function getTelegramAppUrl(): string {
     return process.env.APP_URL!.trim();
   }
 
-  // Active public URL for the mini-app (Production Railway URL)
-  return 'https://tricome-production.up.railway.app';
+  // Active public URL for the mini-app (Vercel Production URL)
+  return 'https://biscotti-boys-app.vercel.app';
 }
 
 function formatTelegramButton(label?: string, targetUrl?: string, fallbackLabel = "🛒 Accéder au Shop 🛍️"): any {
@@ -4632,7 +4632,7 @@ function formatTelegramButton(label?: string, targetUrl?: string, fallbackLabel 
 
   // Check if it's an external web link (not an AI Studio internal sandbox, and not the shop app itself)
   const isInternalSandbox = cleanUrl.includes('ais-dev-') || cleanUrl.includes('localhost');
-  const isExplicitShopUrl = cleanUrl === appUrl || cleanUrl.includes('railway.app') || cleanUrl.includes('ais-pre-');
+  const isExplicitShopUrl = cleanUrl === appUrl || cleanUrl.includes('biscotti-boys-app.vercel.app') || cleanUrl.includes('railway.app') || cleanUrl.includes('ais-pre-');
   
   if (cleanUrl.startsWith('http') && !isInternalSandbox && !isExplicitShopUrl) {
     const isSocialOrExternal = cleanUrl.includes('instagram.com') || 
