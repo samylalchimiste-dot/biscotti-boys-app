@@ -1,0 +1,74 @@
+[
+  {
+    "status": "PENDING",
+    "username": "lolaa551",
+    "telegramId": "1117384827",
+    "lastName": "",
+    "firstName": "Lola",
+    "date": "2026-07-22T19:28:00.383Z",
+    "id": "pending-1117384827"
+  },
+  {
+    "id": "pending-5660850167",
+    "date": "2026-06-29T15:45:45.296Z",
+    "firstName": "W",
+    "lastName": "VB",
+    "status": "PENDING",
+    "username": "walter2252",
+    "telegramId": "5660850167"
+  },
+  {
+    "username": "chnew32",
+    "status": "PENDING",
+    "date": "2026-07-22T00:58:42.704Z",
+    "lastName": "",
+    "id": "pending-6744107988",
+    "telegramId": "6744107988",
+    "firstName": "Chneww"
+  },
+  {
+    "lastName": "",
+    "status": "PENDING",
+    "telegramId": "7233313479",
+    "id": "pending-7233313479",
+    "date": "2026-06-29T19:00:37.649Z",
+    "firstName": "Pfizer",
+    "username": "N/A"
+  },
+  {
+    "telegramId": "7702746879",
+    "username": "N/A",
+    "firstName": "𝘈𝘒𝘙𝘈𝗣𝗢𝗩𝗜𝗖́",
+    "lastName": "𝟭𝟬",
+    "id": "pending-7702746879",
+    "date": "2026-07-02T12:08:58.966Z",
+    "status": "PENDING"
+  },
+  {
+    "username": "sosoo7555",
+    "firstName": "Soso",
+    "date": "2026-07-22T11:07:05.192Z",
+    "lastName": "",
+    "status": "PENDING",
+    "id": "pending-8146234795",
+    "telegramId": "8146234795"
+  },
+  {
+    "username": "salutcmoiss",
+    "telegramId": "8189483422",
+    "date": "2026-07-21T09:47:22.664Z",
+    "lastName": "",
+    "firstName": "Lowk",
+    "status": "PENDING",
+    "id": "pending-8189483422"
+  },
+  {
+    "firstName": "Niv568",
+    "lastName": "",
+    "date": "2026-07-21T15:55:58.286Z",
+    "telegramId": "8777391615",
+    "username": "niv568",
+    "id": "pending-8777391615",
+    "status": "PENDING"
+  }
+]
