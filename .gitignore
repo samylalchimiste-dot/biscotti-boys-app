@@ -13,13 +13,16 @@ uploads/**
 /uploads
 
 # Cloud-synced local state database files
-database-file-mappings.json
 database-products-restored.json
-database-products.json
-database-settings.json
-database-whitelist.json
 database-orders.json
 database-connection-logs.json
+database-file-mappings.json
+database-last-broadcast.json
+database-pending-approvals.json
+database-promo-sent.json
+database-reviews.json
+database-users.json
+database-whitelist.json
 storage_diagnosis.json
 video_audit_report.json
 
@@ -41,4 +44,3 @@ run_*.cjs
 view_*.cjs
 sync_to_firestore.cjs
 file_sizes.cjs
-

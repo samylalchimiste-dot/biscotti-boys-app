@@ -4,6 +4,31 @@
  */
 
 import { VideoItem, Order, BrandingSettings, SectionTitle, WhitelistItem, Reward, PromoCode, PendingApproval, ReviewItem, UserProfile, getCleanAuthor } from './types';
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getFirestore, collection, getDocs, doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import firebaseConfig from '../firebase-applet-config.json';
+
+const fbApp = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+const clientDb = getFirestore(fbApp, firebaseConfig.firestoreDatabaseId);
+
+const CLOUD_MEDIA_MAP: Record<string, string> = {
+  'f05a58c4-9485-403a-bc28-ebc611ad726f.jpg': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff05a58c4-9485-403a-bc28-ebc611ad726f.jpg?alt=media&token=290b9338-3a98-4d37-ba9d-96b706ba2074',
+  '899b5f2e-80eb-4e2c-9653-1bc80bb03cf2.MP4_secure_compat.mp4': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F899b5f2e-80eb-4e2c-9653-1bc80bb03cf2.MP4_secure_compat.mp4?alt=media&token=fd809aec-daca-48a7-a748-9a298b96adc3',
+  '6806dd6a-0637-4447-acde-1814819d5b4b.jpg': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F6806dd6a-0637-4447-acde-1814819d5b4b.jpg?alt=media&token=6b355deb-0751-419c-8ceb-147b5117fc3b',
+  '79ae8a35-de21-492e-a7fa-6f8f5a38a0a9.MP4_secure_compat.mp4': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F79ae8a35-de21-492e-a7fa-6f8f5a38a0a9.MP4_secure_compat.mp4?alt=media&token=4776317b-930e-4cbc-b131-e4ca0208bffa',
+  '34ceb359-c57c-40b8-a83a-e83bc4679baf.jpg': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F34ceb359-c57c-40b8-a83a-e83bc4679baf.jpg?alt=media&token=6205c81b-80b7-476c-ab86-ba8db9e74ff1',
+  'f51676d8-c308-47ad-af8d-919e16126a6c.MP4_secure_compat.mp4': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff51676d8-c308-47ad-af8d-919e16126a6c.MP4_secure_compat.mp4?alt=media&token=6a05f51e-9e47-4fe7-805f-e7ca78f5640f',
+  '2859d0e5-6fc9-4de5-a437-91b420d557bc.jpg': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F2859d0e5-6fc9-4de5-a437-91b420d557bc.jpg?alt=media&token=d3b9917c-2486-4c5c-8780-a108dbdf7aee',
+  'e7dbfbd5-2ac4-47e8-8d55-3011c15281e1.MP4_secure_compat.mp4': 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Fe7dbfbd5-2ac4-47e8-8d55-3011c15281e1.MP4_secure_compat.mp4?alt=media&token=6ccd3807-e17d-49f4-a94e-4c6d91ecdd03'
+};
+
+function toCloudMediaUrl(url?: string): string {
+  if (!url) return '';
+  if (url.startsWith('http')) return url;
+  const filename = url.split('/').pop() || '';
+  if (CLOUD_MEDIA_MAP[filename]) return CLOUD_MEDIA_MAP[filename];
+  return url;
+}
 
 // Converts a Blob/File to a Base64 data URL for persistence
 function blobToBase64(blob: Blob): Promise<string> {
@@ -77,7 +102,114 @@ export function getAdminHeaders(additional: Record<string, string> = {}): Record
   return getAuthHeaders(additional);
 }
 
-export const DEFAULT_PRODUCTS: VideoItem[] = [];
+export const DEFAULT_PRODUCTS: VideoItem[] = [
+  {
+    id: 'omerta-custom-1787518977330',
+    price: 700,
+    title: 'ALIEN CHERRY LEMON🍇🍒🍋',
+    pricing: {
+      '100g': 700,
+      '50g': 800,
+      '1kg': 5000,
+      '500g': 2650
+    },
+    thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff05a58c4-9485-403a-bc28-ebc611ad726f.jpg?alt=media&token=290b9338-3a98-4d37-ba9d-96b706ba2074',
+    description: '— Un profil fruité et gourmand mêlant des notes de pêche douce, raisin mûr et une touche de citron frais. Un mélange sucré, tropical et légèrement acidulé, avec une belle fraîcheur en bouche.',
+    cities: ['germany'],
+    pricePerGram: 700,
+    isPremium: true,
+    isFeatured: true,
+    duration: '0:15',
+    additionalPhotos: [],
+    category: 'STATIC',
+    badge: 'IN_STOCK',
+    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F899b5f2e-80eb-4e2c-9653-1bc80bb03cf2.MP4_secure_compat.mp4?alt=media&token=fd809aec-daca-48a7-a748-9a298b96adc3',
+    views: 1252,
+    city: 'germany',
+    imageUrl: '',
+    author: 'BISCOTTI BOYS',
+    currency: 'EUR'
+  },
+  {
+    id: 'omerta-custom-1789329871783',
+    title: 'FORBIDEN FRUIT CAKE🍑🍉🍇🍒',
+    description: 'Notes gourmandes d’agrumes confits, de fruits tropicaux et de sorbet crémeux. Une saveur riche, douce et parfaitement équilibrée, avec une finale sucrée, onctueuse et ultra parfumée',
+    category: 'STATIC',
+    city: 'malaga',
+    cities: ['malaga', 'sevilla'],
+    pricing: {
+      '500g': 2650,
+      '50g': 800,
+      '100g': 700,
+      '1kg': 4800
+    },
+    price: 700,
+    pricePerGram: 700,
+    thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F6806dd6a-0637-4447-acde-1814819d5b4b.jpg?alt=media&token=6b355deb-0751-419c-8ceb-147b5117fc3b',
+    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F79ae8a35-de21-492e-a7fa-6f8f5a38a0a9.MP4_secure_compat.mp4?alt=media&token=4776317b-930e-4cbc-b131-e4ca0208bffa',
+    imageUrl: '',
+    additionalPhotos: [],
+    duration: '0:15',
+    views: 878,
+    isPremium: true,
+    isFeatured: true,
+    author: 'BISCOTTI BOYS',
+    currency: 'EUR'
+  },
+  {
+    id: 'omerta-custom-1789425992320',
+    title: 'TROPICAL TANGIE🌴🍊',
+    description: 'Explosion d’agrumes, de mandarine sucrée et de fruits tropicaux. Une saveur fraîche, juteuse et ultra parfumée, avec une finale douce et exotique. 🌴🍊✨',
+    category: 'STATIC',
+    badge: 'IN_STOCK',
+    city: 'malaga',
+    cities: ['malaga', 'sevilla'],
+    pricing: {
+      '500g': 2650,
+      '100g': 700,
+      '1kg': 5000,
+      '50g': 800
+    },
+    price: 700,
+    pricePerGram: 700,
+    thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F34ceb359-c57c-40b8-a83a-e83bc4679baf.jpg?alt=media&token=6205c81b-80b7-476c-ab86-ba8db9e74ff1',
+    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff51676d8-c308-47ad-af8d-919e16126a6c.MP4_secure_compat.mp4?alt=media&token=6a05f51e-9e47-4fe7-805f-e7ca78f5640f',
+    imageUrl: '',
+    additionalPhotos: [],
+    duration: '0:15',
+    views: 1139,
+    isPremium: true,
+    isFeatured: true,
+    author: 'BISCOTTI BOYS',
+    currency: 'EUR'
+  },
+  {
+    id: 'omerta-custom-1789426483100',
+    title: 'GMO X RUNTZ🍰🍓',
+    description: '• Notes de burger grillé, d’ail et de gaz, avec une finition crémeuse et épicée. 🍔⛽🔥',
+    category: 'FROZEN',
+    city: 'malaga',
+    cities: ['malaga', 'sevilla'],
+    pricing: {
+      '100g': 350,
+      '50g': 200,
+      '1kg': 2500,
+      '500g': 1500
+    },
+    price: 350,
+    pricePerGram: 350,
+    thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F2859d0e5-6fc9-4de5-a437-91b420d557bc.jpg?alt=media&token=d3b9917c-2486-4c5c-8780-a108dbdf7aee',
+    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Fe7dbfbd5-2ac4-47e8-8d55-3011c15281e1.MP4_secure_compat.mp4?alt=media&token=6ccd3807-e17d-49f4-a94e-4c6d91ecdd03',
+    imageUrl: '',
+    additionalPhotos: [],
+    duration: '0:15',
+    views: 624,
+    isPremium: true,
+    isFeatured: true,
+    author: 'BISCOTTI BOYS',
+    currency: 'EUR'
+  }
+];
 
 function filterForbiddenProducts(list: VideoItem[]): VideoItem[] {
   if (!Array.isArray(list)) return [];
@@ -99,6 +231,9 @@ function filterForbiddenProducts(list: VideoItem[]): VideoItem[] {
     })
     .map((p) => ({
       ...p,
+      videoUrl: toCloudMediaUrl(p.videoUrl),
+      thumbnailUrl: toCloudMediaUrl(p.thumbnailUrl),
+      imageUrl: toCloudMediaUrl(p.imageUrl),
       city: p.city ? String(p.city).toLowerCase() : undefined,
       cities: Array.isArray(p.cities) && p.cities.length > 0
         ? p.cities.map((c: any) => String(c).toLowerCase())
@@ -120,9 +255,12 @@ export async function getProducts(): Promise<VideoItem[]> {
         'Pragma': 'no-cache'
       })
     });
-    if (!res.ok) throw new Error('Failed to retrieve products from server');
+    const contentType = res.headers.get('content-type') || '';
+    if (!res.ok || !contentType.includes('application/json')) {
+      throw new Error('Failed to retrieve products from server');
+    }
     const list = await res.json();
-    if (Array.isArray(list)) {
+    if (Array.isArray(list) && list.length > 0) {
       const formatted = filterForbiddenProducts(
         list.map((p: any) => ({
           ...p,
@@ -141,10 +279,28 @@ export async function getProducts(): Promise<VideoItem[]> {
       return formatted;
     }
   } catch (err) {
-    console.warn('Backend server unreachable, trying client fallback:', err);
+    console.warn('Backend server unreachable, querying Firebase Firestore directly:', err);
   }
 
-  // If server is unreachable or returned empty, try to load from client localStorage
+  // Direct Firebase Firestore fallback (critical for Vercel / GitHub static deployments)
+  try {
+    const snap = await getDocs(collection(clientDb, 'products'));
+    if (!snap.empty) {
+      const fbList = snap.docs.map((d) => ({ ...d.data(), id: d.id } as VideoItem));
+      const formatted = filterForbiddenProducts(fbList);
+      if (formatted.length > 0) {
+        try {
+          localStorage.setItem('north47_cached_products_v3', JSON.stringify(formatted));
+          localStorage.setItem('omerta_fallback_products', JSON.stringify(formatted));
+        } catch (e) {}
+        return formatted;
+      }
+    }
+  } catch (fbErr) {
+    console.warn('Direct Firestore query error, checking localStorage fallback:', fbErr);
+  }
+
+  // If server and Firestore are unreachable, try to load from client localStorage
   const local = localStorage.getItem('north47_cached_products_v3') || localStorage.getItem('omerta_fallback_products');
   if (local) {
     try {
@@ -253,26 +409,19 @@ export async function addProduct(product: VideoItem, videoBlob?: Blob, photoBlob
     payload.additionalPhotos = uploadedPhotos;
   }
 
-  const res = await fetch('/api/products', {
-    method: 'POST',
-    headers: getAdminHeaders({ 'Content-Type': 'application/json' }),
-    body: JSON.stringify(payload)
-  });
-
-  if (!res.ok) {
-    let serverErr = 'Erreur serveur lors de l\'enregistrement';
-    try {
-      const errData = await res.json();
-      if (errData && errData.error) {
-        serverErr = errData.error;
-      }
-    } catch (e) {
-      try {
-        const txt = await res.text();
-        if (txt) serverErr = txt;
-      } catch (ee) {}
+  try {
+    const res = await fetch('/api/products', {
+      method: 'POST',
+      headers: getAdminHeaders({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify(payload)
+    });
+    const contentType = res.headers.get('content-type') || '';
+    if (!res.ok || !contentType.includes('application/json')) {
+      throw new Error('Server API unavailable, saving directly to Firestore');
     }
-    throw new Error(serverErr);
+  } catch (apiErr) {
+    // Direct Firestore write when running on static host (Vercel / GitHub)
+    await setDoc(doc(clientDb, 'products', payload.id), payload);
   }
 
   // Sync client-side fallback list
@@ -283,25 +432,17 @@ export async function addProduct(product: VideoItem, videoBlob?: Blob, photoBlob
 }
 
 export async function deleteProduct(id: string): Promise<void> {
-  const res = await fetch(`/api/products/${id}`, {
-    method: 'DELETE',
-    headers: getAdminHeaders()
-  });
-
-  if (!res.ok) {
-    let serverErr = 'Erreur serveur lors de la suppression';
-    try {
-      const errData = await res.json();
-      if (errData && errData.error) {
-        serverErr = errData.error;
-      }
-    } catch (e) {
-      try {
-        const txt = await res.text();
-        if (txt) serverErr = txt;
-      } catch (ee) {}
+  try {
+    const res = await fetch(`/api/products/${id}`, {
+      method: 'DELETE',
+      headers: getAdminHeaders()
+    });
+    const contentType = res.headers.get('content-type') || '';
+    if (!res.ok || !contentType.includes('application/json')) {
+      throw new Error('Server API unavailable, deleting directly from Firestore');
     }
-    throw new Error(serverErr);
+  } catch (apiErr) {
+    await deleteDoc(doc(clientDb, 'products', id));
   }
 
   // Sync client-side fallback list
@@ -390,15 +531,27 @@ export async function deleteOrder(orderId: string): Promise<void> {
 export async function getBrandingSettings(): Promise<BrandingSettings> {
   const defaultTitles: SectionTitle[] = [
     { id: '1', text: 'LA RÉSERVE PRIVÉE', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
-    { id: '2', text: 'SELECTION DRY SIFT', category: 'DRY SIFT', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
-    { id: '3', text: 'SELECTION BELDIA', category: 'BELDIA', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
-    { id: '4', text: 'SELECTION LA MOUSSE', category: 'LA MOUSSE', size: 'L', color: '#D4AF37', enabled: true, order: 4 },
-    { id: '5', text: 'SELECTION FROZEN', category: 'FROZEN', size: 'L', color: '#D4AF37', enabled: true, order: 5 },
-    { id: '6', text: 'SELECTION STATIC', category: 'STATIC', size: 'L', color: '#D4AF37', enabled: true, order: 6 },
-    { id: '7', text: 'SELECTION WPFF', category: 'WPFF', size: 'L', color: '#D4AF37', enabled: true, order: 7 },
-    { id: '8', text: 'MEET UP RABAT', category: 'MEET UP RABAT', size: 'L', color: '#D4AF37', enabled: true, order: 8 },
-    { id: '9', text: 'ACCESSOIRES', category: 'ACCESSOIRES', size: 'L', color: '#D4AF37', enabled: true, order: 9 }
+    { id: '2', text: 'SELECTION DRY', category: 'DRY', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
+    { id: '3', text: 'SELECTION FROZEN', category: 'FROZEN', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
+    { id: '4', text: 'SELECTION STATIC', category: 'STATIC', size: 'L', color: '#D4AF37', enabled: true, order: 4 }
   ];
+
+  const defaultSettings: BrandingSettings = {
+    promoMessageText: "🚨 NEW DROP EST DISPONIBLE 🚨\n\nLes nouvelles références sont arrivées. 👀🔥\n\n📲 La mini-application est opérationnelle pour passer vos commandes.\nAppuyez sur 🛒 Shop pour y accéder directement.\n\n⚠️ Si vous n’avez pas encore accès, envoyez votre ID en privé afin d’être ajouté à la liste d’accès.\n@BISCOTTIBOY10\n\nBonne découverte à tous. 💨",
+    promoButtonText: 'Boutique 🛍️',
+    introBgUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F673c0e34-e91f-4473-a3aa-7a8258465a24.jpg?alt=media&token=15179363-85e3-45d8-aaab-ad495ae57342',
+    launchScreenUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F4acedce2-9ae4-45f8-807d-47f56c976aa4.jpg?alt=media&token=29314e82-c98b-40ae-8c4e-fac44f4c28ff',
+    homepageHeroBgUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F6b509227-efe3-45dc-87cb-44cdc569bdc1.jpg?alt=media&token=923678db-65d5-4627-9ffe-0b7448b73dfe',
+    bgLogoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F472aec04-54b1-4a97-b151-f963de73dad6.jpg?alt=media&token=9ed1bf13-9104-430d-b777-8887071a0e7e',
+    logoUrl: '/biscotti_boys_farm_logo.jpg',
+    promoImageUrl: '/biscotti_boys_farm_logo.jpg',
+    introStatusLine: 'BISCOTTI BOYS FARM — RÉSERVE PRIVÉE',
+    telegramChannelUrl: 'https://t.me/+bMAog56A3AthODM0',
+    telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
+    signalUrl: 'https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa',
+    customAppUrl: 'https://biscotti-boys-app.vercel.app',
+    sectionTitles: defaultTitles
+  };
 
   try {
     const res = await fetch(`/api/settings?t=${Date.now()}`, {
@@ -408,7 +561,10 @@ export async function getBrandingSettings(): Promise<BrandingSettings> {
         'Pragma': 'no-cache'
       })
     });
-    if (!res.ok) throw new Error('Failed to fetch settings');
+    const contentType = res.headers.get('content-type') || '';
+    if (!res.ok || !contentType.includes('application/json')) {
+      throw new Error('Failed to fetch settings');
+    }
     const data = await res.json();
     if (!data.sectionTitles) {
       data.sectionTitles = defaultTitles;
@@ -418,22 +574,30 @@ export async function getBrandingSettings(): Promise<BrandingSettings> {
     } catch (e) {}
     return data;
   } catch (e) {
-    console.warn('Fallback settings logic:', e);
-    const cached = localStorage.getItem('north47_cached_settings');
-    if (cached) {
-      try {
-        return JSON.parse(cached);
-      } catch (err) {}
-    }
-    return {
-      introBgUrl: '/biscotti_boys_farm_logo.jpg',
-      launchScreenUrl: '/biscotti_boys_farm_logo.jpg',
-      homepageHeroBgUrl: '/biscotti_boys_farm_logo.jpg',
-      logoUrl: '/biscotti_boys_farm_logo.jpg',
-      introStatusLine: '🌿💎 BISCOTTI BOYS FARM 💎🌿 — RÉSERVE PRIVÉE',
-      sectionTitles: defaultTitles
-    };
+    console.warn('Server settings unreachable, querying Firebase Firestore directly:', e);
   }
+
+  try {
+    const snap = await getDoc(doc(clientDb, 'settings', 'branding'));
+    if (snap.exists()) {
+      const fbData = { ...defaultSettings, ...snap.data() } as BrandingSettings;
+      if (!fbData.sectionTitles) fbData.sectionTitles = defaultTitles;
+      try {
+        localStorage.setItem('north47_cached_settings', JSON.stringify(fbData));
+      } catch (e) {}
+      return fbData;
+    }
+  } catch (fbErr) {
+    console.warn('Direct Firestore settings query error:', fbErr);
+  }
+
+  const cached = localStorage.getItem('north47_cached_settings');
+  if (cached) {
+    try {
+      return { ...defaultSettings, ...JSON.parse(cached) };
+    } catch (err) {}
+  }
+  return defaultSettings;
 }
 
 export async function updateBrandingSettings(settings: Partial<BrandingSettings>): Promise<BrandingSettings> {

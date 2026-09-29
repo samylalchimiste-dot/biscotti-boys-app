@@ -1834,42 +1834,49 @@ function saveFileMappings(mappings: Record<string, string[]>) {
 }
 
 function getBestMediaUrl(localUrl: string | undefined, cloudUrl: string | undefined): string {
+  // Always prefer permanent Firebase Storage URLs so both AI Studio and external deployments (Vercel/GitHub) load media directly
+  if (cloudUrl && (cloudUrl.includes('firebasestorage.googleapis.com') || cloudUrl.includes('storage.googleapis.com'))) {
+    return cloudUrl;
+  }
+  if (localUrl && (localUrl.includes('firebasestorage.googleapis.com') || localUrl.includes('storage.googleapis.com'))) {
+    return localUrl;
+  }
+
   const urlCandidate = localUrl || cloudUrl || '';
   if (!urlCandidate) return '';
-  
-  // Identify if this media file represents a local/uploaded resource
-  const isUpload = 
-    urlCandidate.startsWith('/uploads/') || 
-    urlCandidate.includes('firebasestorage.googleapis.com') || 
-    urlCandidate.includes('storage.googleapis.com') ||
-    urlCandidate.includes('uguu.se') ||
-    urlCandidate.includes('tmpfiles.org') ||
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(path.basename(urlCandidate));
 
   let filename = '';
   try {
     if (urlCandidate.startsWith('http')) {
       const parsed = new URL(urlCandidate);
-      if (parsed.hostname.includes('firebasestorage.googleapis.com')) {
-        const decoded = decodeURIComponent(parsed.pathname);
-        filename = path.basename(decoded);
-      } else {
-        filename = path.basename(parsed.pathname);
-      }
+      filename = path.basename(decodeURIComponent(parsed.pathname));
     } else {
       filename = path.basename(urlCandidate);
     }
   } catch (e) {
     filename = path.basename(urlCandidate);
   }
-  
+
+  // Check if we have a permanent Firebase Storage URL mapped for this filename
+  if (filename) {
+    const mappings = loadFileMappings();
+    const mappedList = mappings[filename];
+    if (Array.isArray(mappedList)) {
+      const fbUrl = mappedList.find((u) => typeof u === 'string' && (u.includes('firebasestorage.googleapis.com') || u.includes('storage.googleapis.com')));
+      if (fbUrl) return fbUrl;
+    }
+  }
+
+  const isUpload =
+    urlCandidate.startsWith('/uploads/') ||
+    urlCandidate.includes('uguu.se') ||
+    urlCandidate.includes('tmpfiles.org') ||
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i.test(filename);
+
   if (filename && isUpload) {
-    // Return relative /uploads/:filename path to force client browsers to download
-    // via our highly robust on-demand caching server proxy, completely avoiding CORS,
-    // geographical blocks, or sandboxed iframe permissions limitations.
     return `/uploads/${filename}`;
   }
-  
+
   return urlCandidate;
 }
 

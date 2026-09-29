@@ -12,10 +12,21 @@
   --color-omerta-gold: #D4AF37;
 }
 
+html {
+  min-height: 100%;
+  height: auto;
+}
+
 body {
   background-color: #000000;
   background-image: radial-gradient(circle at top right, #0c0c0c 0%, #000000 100%);
   color: #F5F5F5;
+  min-height: 100%;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
 /* Custom scrollbar matching dark luxury themes */
