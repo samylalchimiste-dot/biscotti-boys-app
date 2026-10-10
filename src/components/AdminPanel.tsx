@@ -506,7 +506,7 @@ export default function AdminPanel({
   const [newWholesalePrice, setNewWholesalePrice] = useState<number>(0);
   const [newCategory, setNewCategory] = useState<string>('WPFF');
   const [newDisplayZone, setNewDisplayZone] = useState<string>(''); // Optional storefront placement (e.g. MEET UP RABAT)
-  const [newAuthor, setNewAuthor] = useState<string>('BISCOTTI BOYS BOT');
+  const [newAuthor, setNewAuthor] = useState<string>('TRICOME LABZ');
   const [newCities, setNewCities] = useState<SupportedCity[]>(['malaga', 'sevilla', 'barcelona', 'amsterdam', 'germany']);
   const [isFeatured, setIsFeatured] = useState<boolean>(true);
 
@@ -3243,7 +3243,7 @@ export default function AdminPanel({
                       type="text"
                       value={settings.customAppUrl || ''}
                       onChange={(e) => setBrandingSettings({ ...settings, customAppUrl: e.target.value })}
-                      placeholder="https://biscotti-boys-app.vercel.app (par défaut)"
+                      placeholder="https://...vercel.app (par défaut)"
                       className="w-full text-[9px] py-1.5 px-2.5 rounded bg-black border border-[#222] focus:border-[#D4AF37] text-white outline-none font-mono"
                     />
                   </div>

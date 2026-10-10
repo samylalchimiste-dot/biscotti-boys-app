@@ -1,93 +1,5 @@
 [
   {
-    "id": "omerta-custom-1787518977330",
-    "price": 700,
-    "title": "ALIEN CHERRY LEMON🍇🍒🍋",
-    "pricing": {
-      "100g": 700,
-      "50g": 800,
-      "1kg": 5000,
-      "500g": 2650
-    },
-    "thumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff05a58c4-9485-403a-bc28-ebc611ad726f.jpg?alt=media&token=290b9338-3a98-4d37-ba9d-96b706ba2074",
-    "description": "— Un profil fruité et gourmand mêlant des notes de pêche douce, raisin mûr et une touche de citron frais. Un mélange sucré, tropical et légèrement acidulé, avec une belle fraîcheur en bouche.",
-    "cities": [
-      "germany"
-    ],
-    "pricePerGram": 700,
-    "isPremium": true,
-    "isFeatured": true,
-    "duration": "0:15",
-    "additionalPhotos": [],
-    "category": "STATIC",
-    "badge": "IN_STOCK",
-    "videoUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F899b5f2e-80eb-4e2c-9653-1bc80bb03cf2.MP4_secure_compat.mp4?alt=media&token=fd809aec-daca-48a7-a748-9a298b96adc3",
-    "views": 1252,
-    "city": "germany",
-    "imageUrl": "",
-    "author": "BISCOTTI BOYS",
-    "currency": "EUR"
-  },
-  {
-    "cities": [
-      "malaga",
-      "sevilla"
-    ],
-    "views": 878,
-    "currency": "EUR",
-    "description": "Notes gourmandes d’agrumes confits, de fruits tropicaux et de sorbet crémeux. Une saveur riche, douce et parfaitement équilibrée, avec une finale sucrée, onctueuse et ultra parfumée",
-    "city": "malaga",
-    "videoUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F79ae8a35-de21-492e-a7fa-6f8f5a38a0a9.MP4_secure_compat.mp4?alt=media&token=4776317b-930e-4cbc-b131-e4ca0208bffa",
-    "imageUrl": "",
-    "duration": "0:15",
-    "pricing": {
-      "500g": 2650,
-      "50g": 800,
-      "100g": 700,
-      "1kg": 4800
-    },
-    "pricePerGram": 700,
-    "price": 700,
-    "category": "STATIC",
-    "isPremium": true,
-    "additionalPhotos": [],
-    "title": "FORBIDEN FRUIT CAKE🍑🍉🍇🍒",
-    "id": "omerta-custom-1789329871783",
-    "isFeatured": true,
-    "thumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F6806dd6a-0637-4447-acde-1814819d5b4b.jpg?alt=media&token=6b355deb-0751-419c-8ceb-147b5117fc3b",
-    "author": "BISCOTTI BOYS BOT"
-  },
-  {
-    "views": 1139,
-    "badge": "IN_STOCK",
-    "author": "BISCOTTI BOYS BOT",
-    "pricePerGram": 700,
-    "thumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F34ceb359-c57c-40b8-a83a-e83bc4679baf.jpg?alt=media&token=6205c81b-80b7-476c-ab86-ba8db9e74ff1",
-    "category": "STATIC",
-    "isPremium": true,
-    "duration": "0:15",
-    "title": "TROPICAL TANGIE🌴🍊",
-    "additionalPhotos": [],
-    "imageUrl": "",
-    "price": 700,
-    "videoUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff51676d8-c308-47ad-af8d-919e16126a6c.MP4_secure_compat.mp4?alt=media&token=6a05f51e-9e47-4fe7-805f-e7ca78f5640f",
-    "currency": "EUR",
-    "cities": [
-      "malaga",
-      "sevilla"
-    ],
-    "id": "omerta-custom-1789425992320",
-    "isFeatured": true,
-    "description": "Explosion d’agrumes, de mandarine sucrée et de fruits tropicaux. Une saveur fraîche, juteuse et ultra parfumée, avec une finale douce et exotique. 🌴🍊✨",
-    "pricing": {
-      "500g": 2650,
-      "100g": 700,
-      "1kg": 5000,
-      "50g": 800
-    },
-    "city": "malaga"
-  },
-  {
     "title": "GMO X RUNTZ🍰🍓",
     "thumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F2859d0e5-6fc9-4de5-a437-91b420d557bc.jpg?alt=media&token=d3b9917c-2486-4c5c-8780-a108dbdf7aee",
     "cities": [
@@ -96,9 +8,9 @@
     ],
     "pricing": {
       "100g": 350,
-      "50g": 200,
       "1kg": 2500,
-      "500g": 1500
+      "500g": 1500,
+      "50g": 200
     },
     "currency": "EUR",
     "price": 350,
@@ -113,7 +25,7 @@
     "category": "FROZEN",
     "additionalPhotos": [],
     "description": "• Notes de burger grillé, d’ail et de gaz, avec une finition crémeuse et épicée. 🍔⛽🔥",
-    "author": "BISCOTTI BOYS BOT",
+    "author": "RÉSERVE PRIVÉE",
     "id": "omerta-custom-1789426483100"
   }
 ]

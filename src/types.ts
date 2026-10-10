@@ -82,12 +82,12 @@ export interface VideoItem {
 }
 
 export function getCleanAuthor(author?: string): string {
-  if (!author) return 'BISCOTTI BOYS';
+  if (!author) return 'TRICOME LABZ';
   const clean = author.trim();
-  if (/shelfterps|shelf\s*terps|tricoma|anassar/i.test(clean)) {
-    return 'BISCOTTI BOYS';
+  if (/shelfterps|shelf\s*terps|laanassar|anassar|biscotti/i.test(clean)) {
+    return 'TRICOME LABZ';
   }
-  return clean || 'BISCOTTI BOYS';
+  return clean || 'TRICOME LABZ';
 }
 
 export interface CartItem {
@@ -159,7 +159,7 @@ export const DEFAULT_MARQUEE_CONFIG: MarqueeConfig = {
   enabled: true,
   speed: 'medium',
   items: [
-    { id: 'm1', text: '💎 BISCOTTI BOYS FARM — RÉSERVE PRIVÉE EUROPÉENNE 💎', active: true, order: 1 },
+    { id: 'm1', text: '💎 TRICOME LABZ — SÉLECTION OFFICIELLE 💎', active: true, order: 1 },
     { id: 'm2', text: '🇪🇸 MÁLAGA • 🇪🇸 SEVILLA • 🇪🇸 BARCELONA • 🇳🇱 AMSTERDAM • 🇩🇪 GERMANY', active: true, order: 2 },
     { id: 'm3', text: '🚀 EXPÉDITION & RETRAIT 24H/48H DISCRÈTE & SÉCURISÉE', active: true, order: 3 },
     { id: 'm4', text: '✨ EXTRACTIONS D\'EXCEPTION & SÉLECTIONS D\'ÉLITE', active: true, order: 4 },

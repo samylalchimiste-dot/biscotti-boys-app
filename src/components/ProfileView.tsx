@@ -152,7 +152,7 @@ export default function ProfileView({
               Besoin d'aide ? Support VIP Direct
             </h4>
             <p className="text-[10px] font-mono text-zinc-400">
-              Assistance Telegram 24/7 disponible avec @BISCOTTIBOY10
+              Assistance Telegram 24/7 disponible en direct
             </p>
           </div>
         </div>

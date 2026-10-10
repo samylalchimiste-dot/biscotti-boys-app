@@ -44,11 +44,12 @@ export default function CatalogView({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'featured' | 'priceAsc' | 'priceDesc' | 'rating'>('featured');
 
-  // Products filtered strictly for the selected city
-  const cityProducts = useMemo(() => {
+  // Products filtered if city chosen, else all products directly available ("comme au début simple")
+  const displayProducts = useMemo(() => {
     if (!products) return [];
-    if (!selectedCity) return [];
-    return products.filter((p) => isProductInCity(p, selectedCity));
+    if (!selectedCity) return products;
+    const filtered = products.filter((p) => isProductInCity(p, selectedCity));
+    return filtered.length > 0 ? filtered : products;
   }, [products, selectedCity]);
 
   const categoryTabs = useMemo<CategoryTab[]>(() => {
@@ -64,7 +65,7 @@ export default function CatalogView({
 
     const knownIds = new Set(['all', 'drysift', 'frozensift', 'wppf', 'static', 'beldia', 'mousse']);
 
-    (cityProducts || []).forEach((p) => {
+    (displayProducts || []).forEach((p) => {
       if (p.category && p.category.trim()) {
         const cTrim = p.category.trim();
         const cLower = cTrim.toLowerCase();
@@ -95,10 +96,10 @@ export default function CatalogView({
     });
 
     return baseTabs;
-  }, [cityProducts]);
+  }, [displayProducts]);
 
   const filteredProducts = useMemo(() => {
-    return cityProducts
+    return displayProducts
       .filter((p) => {
         const productCat = (p.category || '').toLowerCase().trim();
         const selCat = (selectedCategory || 'Tous').toLowerCase().trim();
@@ -140,7 +141,7 @@ export default function CatalogView({
         if (sortBy === 'rating') return (b.rating || 5) - (a.rating || 5);
         return 0;
       });
-  }, [cityProducts, selectedCategory, searchQuery, sortBy, t]);
+  }, [displayProducts, selectedCategory, searchQuery, sortBy, t]);
 
   const activeTabId = useMemo(() => {
     const sel = (selectedCategory || 'Tous').toLowerCase().trim();
@@ -154,9 +155,10 @@ export default function CatalogView({
     return sel;
   }, [selectedCategory]);
 
-  if (!selectedCity) {
-    return (
-      <div className="space-y-4 pb-24 pt-2 px-3 sm:px-4 max-w-2xl mx-auto" id="catalog-view">
+  return (
+    <div className="space-y-4 pb-24 pt-2 px-3 sm:px-4 max-w-2xl mx-auto" id="catalog-view">
+      {/* Optional City Switcher (if city was selected) */}
+      {selectedCity && (
         <CitySelector
           selectedCity={selectedCity}
           onSelectCity={onSelectCity}
@@ -164,20 +166,7 @@ export default function CatalogView({
           products={products}
           triggerHaptic={triggerHaptic}
         />
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-4 pb-24 pt-2 px-3 sm:px-4 max-w-2xl mx-auto" id="catalog-view">
-      {/* City Header & Switcher */}
-      <CitySelector
-        selectedCity={selectedCity}
-        onSelectCity={onSelectCity}
-        onClearCity={onClearCity}
-        products={products}
-        triggerHaptic={triggerHaptic}
-      />
+      )}
 
       {/* Title & Filter Header */}
       <div className="space-y-3">
@@ -192,7 +181,7 @@ export default function CatalogView({
               </span>
             </h2>
             <p className="text-xs text-zinc-400 font-mono">
-              BISCOTTI BOYS BOT • Expédition sous 24h
+              TRICOME LABZ • Expédition sous 24h
             </p>
           </div>
 

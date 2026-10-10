@@ -25,7 +25,7 @@ export const translations = {
 
     // Hero & Home
     welcomeTo: "WILLKOMMEN BEI",
-    heroBadge: "BISCOTTI BOYS FARM — RÉSERVE PRIVÉE",
+    heroBadge: "TRICOME LABZ — SÉLECTION OFFICIELLE",
     heroSubtitle: "Exklusive Extraktionen & erstklassige Blüten aus handverlesenen Spitzen-Ernten. 100% 0-Log zertifiziert.",
     exploreCatalog: "Katalog Entdecken",
     usefulInfoBtn: "Informationen",
@@ -206,7 +206,7 @@ export const translations = {
 
     // Hero & Home
     welcomeTo: "BIENVENUE",
-    heroBadge: "BISCOTTI BOYS FARM — RÉSERVE PRIVÉE",
+    heroBadge: "TRICOME LABZ — SÉLECTION OFFICIELLE",
     heroSubtitle: "Extractions d'exception & fleurs de prestige issues des meilleures récoltes certifiées 100% 0-Log.",
     exploreCatalog: "Explorer le Catalogue",
     usefulInfoBtn: "Informations",
@@ -387,7 +387,7 @@ export const translations = {
 
     // Hero & Home
     welcomeTo: "WELCOME TO",
-    heroBadge: "BISCOTTI BOYS FARM — PRIVATE RESERVE",
+    heroBadge: "TRICOME LABZ — OFFICIAL RESERVE",
     heroSubtitle: "Exceptional extractions & prestige flowers from top harvests 100% 0-Log certified.",
     exploreCatalog: "Explore Catalog",
     usefulInfoBtn: "Information",

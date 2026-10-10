@@ -92,14 +92,15 @@ export default function HomeView({
     );
   }, [branding]);
 
-  // Products filtered strictly for the selected city
-  const cityProducts = useMemo(() => {
+  // Products list for display: all products directly available by default ("comme au début simple")
+  const displayProducts = useMemo(() => {
     if (!products) return [];
-    if (!selectedCity) return [];
-    return products.filter((p) => isProductInCity(p, selectedCity));
+    if (!selectedCity) return products;
+    const filtered = products.filter((p) => isProductInCity(p, selectedCity));
+    return filtered.length > 0 ? filtered : products;
   }, [products, selectedCity]);
 
-  // Luxury Category Tabs with refined icons/emojis (based on city's inventory)
+  // Luxury Category Tabs with refined icons/emojis (based on inventory)
   const categoryTabs = useMemo<CategoryTab[]>(() => {
     const baseTabs: CategoryTab[] = [
       { id: 'all', label: 'TOUS', query: 'Tous', icon: Sparkles },
@@ -113,7 +114,7 @@ export default function HomeView({
 
     const knownIds = new Set(['all', 'drysift', 'frozensift', 'static', 'wppf', 'beldia', 'mousse']);
 
-    (cityProducts || []).forEach((p) => {
+    (displayProducts || []).forEach((p) => {
       if (p.category && p.category.trim()) {
         const cTrim = p.category.trim();
         const cLower = cTrim.toLowerCase();
@@ -144,15 +145,15 @@ export default function HomeView({
     });
 
     return baseTabs;
-  }, [cityProducts]);
+  }, [displayProducts]);
 
-  // Filter products by selected category and search query within current city
+  // Filter products by selected category and search query
   const filteredProducts = useMemo(() => {
-    if (!cityProducts) return [];
+    if (!displayProducts) return [];
     const sel = (selectedCategory || 'Tous').toLowerCase().trim();
     const query = searchQuery.toLowerCase().trim();
 
-    return cityProducts.filter((p) => {
+    return displayProducts.filter((p) => {
       const cat = (p.category || '').toLowerCase().trim();
 
       // Category matching logic
@@ -184,7 +185,7 @@ export default function HomeView({
 
       return matchesCat && matchesSearch;
     });
-  }, [cityProducts, selectedCategory, searchQuery]);
+  }, [displayProducts, selectedCategory, searchQuery]);
 
   const activeTabId = useMemo(() => {
     const sel = (selectedCategory || 'Tous').toLowerCase().trim();
@@ -214,7 +215,7 @@ export default function HomeView({
         <div className="relative aspect-[16/10] sm:aspect-[16/8] w-full overflow-hidden flex items-center justify-center bg-black">
           <img
             src={heroImageUrl}
-            alt="BISCOTTI BOYS BOT"
+            alt="TRICOME LABZ"
             className="w-full h-full object-cover object-center"
             loading="eager"
             onError={(e) => {
@@ -265,34 +266,10 @@ export default function HomeView({
         </div>
       </motion.div>
 
-      {/* 3. FLOW: SELECT CITY vs. CITY MENU & PRODUCTS */}
-      {!selectedCity ? (
-        /* STEP 1: CITY SELECTION SCREEN (The user chooses their city first) */
-        <CitySelector
-          selectedCity={selectedCity}
-          onSelectCity={onSelectCity}
-          onClearCity={onClearCity}
-          products={products}
-          triggerHaptic={triggerHaptic}
-        />
-      ) : (
-        /* STEP 2 & 3: CITY MENU & DEDICATED PRODUCTS */
-        <div className="space-y-4">
-          {/* Dedicated City Menu with ← Cities back navigation */}
-          <CityMenu
-            cityId={selectedCity}
-            onBackToCities={onClearCity}
-            selectedCategory={selectedCategory}
-            onSelectCategory={(query) => {
-              setSelectedCategory(query);
-              scrollToCatalog();
-            }}
-            cityProducts={cityProducts}
-            triggerHaptic={triggerHaptic}
-          />
-
-          {/* Category Tabs (Horizontal smooth slider) */}
-          <div className="relative -mx-3 sm:-mx-4 px-3 sm:px-4 pt-1" id="catalog-section">
+      {/* 3. DIRECT CATALOG VIEW — SIMPLE & SANS BLOCAGE AU PREMIER */}
+      <div className="space-y-4">
+        {/* Category Tabs (Horizontal smooth slider) */}
+        <div className="relative -mx-3 sm:-mx-4 px-3 sm:px-4 pt-1" id="catalog-section">
             <div className="flex items-center gap-2 overflow-x-auto pb-1.5 pt-0.5 no-scrollbar scroll-smooth">
               {categoryTabs.map((tab) => {
                 const Icon = tab.icon;
@@ -521,20 +498,21 @@ export default function HomeView({
       )}
 
       {/* Bottom Switch City Action */}
-      <div className="pt-6 pb-2 text-center">
-        <button
-          onClick={() => {
-            triggerHaptic('medium');
-            onClearCity();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-white/10 hover:border-amber-400/40 text-xs font-mono text-zinc-300 hover:text-white transition cursor-pointer"
-        >
-          <span>← Changer de ville (Actuel : {selectedCity.toUpperCase()})</span>
-        </button>
-      </div>
+      {selectedCity && (
+        <div className="pt-6 pb-2 text-center">
+          <button
+            onClick={() => {
+              triggerHaptic('medium');
+              onClearCity();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-white/10 hover:border-amber-400/40 text-xs font-mono text-zinc-300 hover:text-white transition cursor-pointer"
+          >
+            <span>← Changer de ville (Actuel : {selectedCity.toUpperCase()})</span>
+          </button>
+        </div>
+      )}
     </div>
-    )}
   </div>
   );
 }

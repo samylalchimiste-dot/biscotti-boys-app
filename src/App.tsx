@@ -128,34 +128,19 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
 
-  // City selection state (HOME -> SELECT CITY -> CITY MENU -> PRODUCTS)
-  const [selectedCity, setSelectedCity] = useState<SupportedCity | null>(() => {
-    try {
-      const saved = localStorage.getItem('biscotti_selected_city');
-      if (saved && ['malaga', 'sevilla', 'barcelona', 'amsterdam', 'germany'].includes(saved)) {
-        return saved as SupportedCity;
-      }
-      return null;
-    } catch {
-      return null;
-    }
-  });
+  // City selection state (simple: null by default so all products show directly)
+  const [selectedCity, setSelectedCity] = useState<SupportedCity | null>(null);
 
   const handleSelectCity = useCallback((city: SupportedCity) => {
     setSelectedCity(city);
-    try {
-      localStorage.setItem('biscotti_selected_city', city);
-    } catch (e) {
-      console.warn('Could not save selected city', e);
-    }
   }, []);
 
   const handleClearCity = useCallback(() => {
     setSelectedCity(null);
     try {
       localStorage.removeItem('biscotti_selected_city');
-    } catch (e) {
-      console.warn('Could not clear selected city', e);
+    } catch {
+      // ignore
     }
   }, []);
 
@@ -534,7 +519,7 @@ export default function App() {
     triggerHaptic('success', 'Commande Validée');
     setCart([]);
     localStorage.removeItem('omerta_cart');
-    showToast('Commande transmise avec succès ! Support : @BISCOTTIBOY10');
+    showToast('Commande transmise avec succès ! Support disponible 24/7.');
   };
 
   const handleAdminUnlockSubmit = async (e: FormEvent) => {
@@ -707,16 +692,16 @@ export default function App() {
                 <img src={branding.logoUrl} alt="Logo" className="w-9 h-9 md:w-10 md:h-10 rounded-2xl border border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.3)] object-cover bg-black group-hover:scale-105 transition duration-300" />
               ) : (
                 <div className="w-9 h-9 md:w-10 md:h-10 rounded-2xl border border-amber-500/40 flex items-center justify-center bg-gradient-to-br from-amber-500/20 via-black to-orange-500/20 text-amber-400 font-mono font-black text-xs md:text-sm shadow-[0_0_12px_rgba(245,158,11,0.3)]">
-                  BB
+                  TL
                 </div>
               )}
               <div className="hidden sm:block">
                 <h1 className="font-mono text-xs md:text-sm tracking-[0.15em] font-black uppercase text-white flex items-center gap-1 group-hover:text-amber-400 transition">
-                  BISCOTTI BOYS
+                  TRICOME LABZ
                   <Sparkles className="w-3 h-3 text-amber-400 animate-pulse" />
                 </h1>
                 <span className="text-[7px] md:text-[8px] text-amber-400/80 font-mono uppercase tracking-[0.2em] block -mt-0.5 font-bold">
-                  BOT VIP • PRIVATE
+                  BOT VIP • OFFICIAL
                 </span>
               </div>
             </div>

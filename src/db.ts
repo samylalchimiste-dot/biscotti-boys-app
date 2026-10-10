@@ -115,7 +115,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     },
     thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff05a58c4-9485-403a-bc28-ebc611ad726f.jpg?alt=media&token=290b9338-3a98-4d37-ba9d-96b706ba2074',
     description: '— Un profil fruité et gourmand mêlant des notes de pêche douce, raisin mûr et une touche de citron frais. Un mélange sucré, tropical et légèrement acidulé, avec une belle fraîcheur en bouche.',
-    cities: ['germany'],
+    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
     pricePerGram: 700,
     isPremium: true,
     isFeatured: true,
@@ -125,9 +125,9 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     badge: 'IN_STOCK',
     videoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F899b5f2e-80eb-4e2c-9653-1bc80bb03cf2.MP4_secure_compat.mp4?alt=media&token=fd809aec-daca-48a7-a748-9a298b96adc3',
     views: 1252,
-    city: 'germany',
+    city: 'all',
     imageUrl: '',
-    author: 'BISCOTTI BOYS',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   },
   {
@@ -135,8 +135,8 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     title: 'FORBIDEN FRUIT CAKE🍑🍉🍇🍒',
     description: 'Notes gourmandes d’agrumes confits, de fruits tropicaux et de sorbet crémeux. Une saveur riche, douce et parfaitement équilibrée, avec une finale sucrée, onctueuse et ultra parfumée',
     category: 'STATIC',
-    city: 'malaga',
-    cities: ['malaga', 'sevilla'],
+    city: 'all',
+    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
     pricing: {
       '500g': 2650,
       '50g': 800,
@@ -153,7 +153,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 878,
     isPremium: true,
     isFeatured: true,
-    author: 'BISCOTTI BOYS',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   },
   {
@@ -162,8 +162,8 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     description: 'Explosion d’agrumes, de mandarine sucrée et de fruits tropicaux. Une saveur fraîche, juteuse et ultra parfumée, avec une finale douce et exotique. 🌴🍊✨',
     category: 'STATIC',
     badge: 'IN_STOCK',
-    city: 'malaga',
-    cities: ['malaga', 'sevilla'],
+    city: 'all',
+    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
     pricing: {
       '500g': 2650,
       '100g': 700,
@@ -180,7 +180,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 1139,
     isPremium: true,
     isFeatured: true,
-    author: 'BISCOTTI BOYS',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   },
   {
@@ -188,8 +188,8 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     title: 'GMO X RUNTZ🍰🍓',
     description: '• Notes de burger grillé, d’ail et de gaz, avec une finition crémeuse et épicée. 🍔⛽🔥',
     category: 'FROZEN',
-    city: 'malaga',
-    cities: ['malaga', 'sevilla'],
+    city: 'all',
+    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
     pricing: {
       '100g': 350,
       '50g': 200,
@@ -206,7 +206,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 624,
     isPremium: true,
     isFeatured: true,
-    author: 'BISCOTTI BOYS',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   }
 ];
@@ -239,8 +239,8 @@ function filterForbiddenProducts(list: VideoItem[]): VideoItem[] {
         ? p.cities.map((c: any) => String(c).toLowerCase())
         : (p.city ? [String(p.city).toLowerCase()] : undefined),
       author: getCleanAuthor(p.author),
-      title: (p.title || '').replace(/shelf(\s*terps)?|tricoma(\s*al\s*anassar)?/gi, 'BISCOTTI BOYS'),
-      description: (p.description || '').replace(/shelf(\s*terps)?|tricoma(\s*al\s*anassar)?/gi, 'BISCOTTI BOYS'),
+      title: (p.title || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
+      description: (p.description || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
       currency: 'EUR'
     }));
 }
@@ -543,9 +543,9 @@ export async function getBrandingSettings(): Promise<BrandingSettings> {
     launchScreenUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F4acedce2-9ae4-45f8-807d-47f56c976aa4.jpg?alt=media&token=29314e82-c98b-40ae-8c4e-fac44f4c28ff',
     homepageHeroBgUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F6b509227-efe3-45dc-87cb-44cdc569bdc1.jpg?alt=media&token=923678db-65d5-4627-9ffe-0b7448b73dfe',
     bgLogoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F472aec04-54b1-4a97-b151-f963de73dad6.jpg?alt=media&token=9ed1bf13-9104-430d-b777-8887071a0e7e',
-    logoUrl: '/biscotti_boys_farm_logo.jpg',
-    promoImageUrl: '/biscotti_boys_farm_logo.jpg',
-    introStatusLine: 'BISCOTTI BOYS FARM — RÉSERVE PRIVÉE',
+    logoUrl: '/tricoma_logo.jpg',
+    promoImageUrl: '/tricoma_logo.jpg',
+    introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
     telegramChannelUrl: 'https://t.me/+bMAog56A3AthODM0',
     telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
     signalUrl: 'https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa',
