@@ -253,7 +253,7 @@ export default function CartDrawer({
       const count = i.packCount || 1;
       return `• ${i.title} (${qtyLabel}) ${count > 1 ? `x${count} ` : ''}= ${i.totalPrice || (i.price * count)}€`;
     }).join('\n');
-    const text = `🛍️ COMMANDE TRICOME LABZ\nID: #${createdOrder.id}\nClient: ${createdOrder.customerName}\nContact: ${createdOrder.phoneNumber || createdOrder.email}\nLivraison: ${createdOrder.address}\n\nArticles:\n${itemsList}\n\nTotal: ${createdOrder.totalAmount}€\nStatut: En attente de validation`;
+    const text = `🛍️ COMMANDE GREENFARMEZ ELANASSER\nID: #${createdOrder.id}\nClient: ${createdOrder.customerName}\nContact: ${createdOrder.phoneNumber || createdOrder.email}\nLivraison: ${createdOrder.address}\n\nArticles:\n${itemsList}\n\nTotal: ${createdOrder.totalAmount}€\nStatut: En attente de validation`;
     
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -310,7 +310,7 @@ export default function CartDrawer({
                 <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
               </h2>
               <span className="text-[10px] font-mono text-zinc-400">
-                TRICOME LABZ • SÉLECTION OFFICIELLE
+                GREENFARMEZ ELANASSER • SÉLECTION OFFICIELLE
               </span>
             </div>
           </div>
@@ -764,7 +764,7 @@ export default function CartDrawer({
                     handleCopyOrderSummary();
                     triggerHaptic('heavy');
                     const orderText = encodeURIComponent(
-                      `🛍️ COMMANDE TRICOME LABZ\n` +
+                      `🛍️ COMMANDE GREENFARMEZ ELANASSER\n` +
                       `Numéro: #${createdOrder.id}\n` +
                       `Client: ${createdOrder.customerName}\n` +
                       `Contact: ${createdOrder.phoneNumber || createdOrder.email}\n` +

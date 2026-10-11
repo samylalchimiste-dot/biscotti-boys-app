@@ -181,7 +181,7 @@ export default function CatalogView({
               </span>
             </h2>
             <p className="text-xs text-zinc-400 font-mono">
-              TRICOME LABZ • Expédition sous 24h
+              GREENFARMEZ ELANASSER • Expédition sous 24h
             </p>
           </div>
 

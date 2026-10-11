@@ -127,7 +127,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 1252,
     city: 'all',
     imageUrl: '',
-    author: 'TRICOME LABZ',
+    author: 'GREENFARMEZ ELANASSER',
     currency: 'EUR'
   },
   {
@@ -153,7 +153,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 878,
     isPremium: true,
     isFeatured: true,
-    author: 'TRICOME LABZ',
+    author: 'GREENFARMEZ ELANASSER',
     currency: 'EUR'
   },
   {
@@ -180,7 +180,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 1139,
     isPremium: true,
     isFeatured: true,
-    author: 'TRICOME LABZ',
+    author: 'GREENFARMEZ ELANASSER',
     currency: 'EUR'
   },
   {
@@ -206,7 +206,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 624,
     isPremium: true,
     isFeatured: true,
-    author: 'TRICOME LABZ',
+    author: 'GREENFARMEZ ELANASSER',
     currency: 'EUR'
   }
 ];
@@ -239,8 +239,8 @@ function filterForbiddenProducts(list: VideoItem[]): VideoItem[] {
         ? p.cities.map((c: any) => String(c).toLowerCase())
         : (p.city ? [String(p.city).toLowerCase()] : undefined),
       author: getCleanAuthor(p.author),
-      title: (p.title || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
-      description: (p.description || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
+      title: (p.title || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'GREENFARMEZ ELANASSER'),
+      description: (p.description || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'GREENFARMEZ ELANASSER'),
       currency: 'EUR'
     }));
 }
@@ -530,7 +530,7 @@ export async function deleteOrder(orderId: string): Promise<void> {
 
 export async function getBrandingSettings(): Promise<BrandingSettings> {
   const defaultTitles: SectionTitle[] = [
-    { id: '1', text: 'LA RÉSERVE PRIVÉE', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+    { id: '1', text: 'GREENFARMEZ ELANASSER', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
     { id: '2', text: 'SELECTION DRY', category: 'DRY', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
     { id: '3', text: 'SELECTION FROZEN', category: 'FROZEN', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
     { id: '4', text: 'SELECTION STATIC', category: 'STATIC', size: 'L', color: '#D4AF37', enabled: true, order: 4 }
@@ -545,7 +545,7 @@ export async function getBrandingSettings(): Promise<BrandingSettings> {
     bgLogoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F472aec04-54b1-4a97-b151-f963de73dad6.jpg?alt=media&token=9ed1bf13-9104-430d-b777-8887071a0e7e',
     logoUrl: '/tricoma_logo.jpg',
     promoImageUrl: '/tricoma_logo.jpg',
-    introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
+    introStatusLine: 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE',
     telegramChannelUrl: 'https://t.me/+bMAog56A3AthODM0',
     telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
     signalUrl: 'https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa',

@@ -283,12 +283,12 @@ export default function IntroScreen({
           >
             <h1 className="font-mono text-xl md:text-2xl font-black tracking-[0.25em] text-white uppercase flex items-center justify-center gap-2">
               <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-orange-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">
-                TRICOME LABZ
+                GREENFARMEZ ELANASSER
               </span>
               <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
             </h1>
             <p className="text-[10px] md:text-xs font-mono tracking-[0.3em] uppercase text-amber-400/90 font-bold">
-              {settings?.introStatusLine || 'TRICOME LABZ — BOUTIQUE OFFICIELLE'}
+              {settings?.introStatusLine || 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE'}
             </p>
           </motion.div>
 

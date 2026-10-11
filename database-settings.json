@@ -1,101 +1,101 @@
 {
+  "customAppUrl": "https://biscotti-boys-app.vercel.app",
+  "instagramUrl": "",
+  "bgLogoUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Fa1e17085-894e-4bb3-b5fe-b76c1ff5b2e9.jpg?alt=media&token=7367960a-788d-43a7-8e38-0db3846f3749",
+  "promoImageUrl": "/tricoma_logo.jpg",
+  "introStatusLine": "GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE",
+  "introVideoUrl": "",
   "sectionTitles": [
     {
-      "size": "L",
       "id": "1",
-      "text": "TRICOME LABZ",
       "category": "All",
       "enabled": true,
       "color": "#D4AF37",
-      "order": 1
+      "size": "L",
+      "order": 1,
+      "text": "GREENFARMEZ ELANASSER"
     },
     {
+      "text": "SELECTION LA MOUSSE",
       "order": 2,
       "color": "#D4AF37",
+      "size": "L",
       "id": "2",
-      "category": "LA MOUSSE",
-      "text": "SELECTION LA MOUSSE",
       "enabled": true,
+      "category": "LA MOUSSE"
+    },
+    {
+      "order": 3,
+      "id": "3",
+      "text": "SELECTION DRY SIFT",
+      "enabled": true,
+      "color": "#D4AF37",
+      "category": "DRY SIFT",
       "size": "L"
     },
     {
+      "id": "4",
       "size": "L",
-      "color": "#D4AF37",
       "enabled": true,
-      "text": "SELECTION DRY SIFT",
-      "order": 3,
-      "id": "3",
-      "category": "DRY SIFT"
-    },
-    {
+      "order": 4,
       "category": "BELDIA",
       "text": "SELECTION BELDIA",
-      "size": "L",
-      "id": "4",
-      "color": "#D4AF37",
-      "enabled": true,
-      "order": 4
+      "color": "#D4AF37"
     },
     {
-      "size": "L",
-      "id": "5",
       "text": "SELECTION FROZEN",
-      "category": "FROZEN",
-      "enabled": true,
       "color": "#D4AF37",
-      "order": 5
+      "id": "5",
+      "size": "L",
+      "category": "FROZEN",
+      "order": 5,
+      "enabled": true
     },
     {
       "order": 6,
+      "text": "SELECTION STATIC",
       "id": "6",
-      "category": "STATIC",
       "color": "#D4AF37",
-      "size": "L",
       "enabled": true,
-      "text": "SELECTION STATIC"
+      "size": "L",
+      "category": "STATIC"
     },
     {
       "order": 7,
-      "id": "7",
-      "color": "#D4AF37",
       "enabled": true,
-      "category": "WPFF",
+      "id": "7",
       "text": "SELECTION WPFF",
+      "category": "WPFF",
+      "color": "#D4AF37",
       "size": "L"
     },
     {
-      "id": "8",
-      "order": 8,
-      "enabled": true,
-      "color": "#D4AF37",
-      "size": "L",
       "text": "MEET UP RABAT",
+      "order": 8,
+      "size": "L",
+      "color": "#D4AF37",
+      "id": "8",
+      "enabled": true,
       "category": "MEET UP RABAT"
     },
     {
-      "size": "L",
-      "color": "#D4AF37",
-      "enabled": true,
-      "text": "ACCESSOIRES",
-      "order": 9,
       "category": "ACCESSOIRES",
-      "id": "9"
+      "text": "ACCESSOIRES",
+      "enabled": true,
+      "order": 9,
+      "id": "9",
+      "color": "#D4AF37",
+      "size": "L"
     }
   ],
-  "telegramSupportUrl": "https://t.me/BISCOTTIBOY10",
-  "introBgUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F65be0a5c-21f4-42e9-ae90-c82cfca03e77.jpg?alt=media&token=5592f94a-1ed3-4b13-bd2a-dd16526e9d12",
-  "instagramUrl": "",
-  "customAppUrl": "https://biscotti-boys-app.vercel.app",
-  "promoButtonText": "Boutique 🛍️",
-  "appDisabled": false,
   "signalUrl": "https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa",
-  "introStatusLine": "TRICOME LABZ — BOUTIQUE OFFICIELLE",
-  "launchScreenUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F613789b1-3b13-46b0-9ab5-36e33481cea6.jpg?alt=media&token=8d1fd0a4-63c3-483c-825a-f2bfadc5b1c2",
   "logoUrl": "/tricoma_logo.jpg",
-  "promoMessageText": "🚨 NEW DROP EST DISPONIBLE 🚨\n\nLes nouvelles références sont arrivées. 👀🔥\n\n📲 La mini-application est opérationnelle pour passer vos commandes.\nAppuyez sur 🛒 Shop pour y accéder directement.\n\n⚠️ Si vous n’avez pas encore accès, envoyez votre ID en privé afin d’être ajouté à la liste d’accès.\n@BISCOTTIBOY10\n\nBonne découverte à tous. 💨",
-  "bgLogoUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Fa1e17085-894e-4bb3-b5fe-b76c1ff5b2e9.jpg?alt=media&token=7367960a-788d-43a7-8e38-0db3846f3749",
-  "promoImageUrl": "/tricoma_logo.jpg",
-  "telegramChannelUrl": "https://t.me/+bMAog56A3AthODM0",
+  "launchScreenUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F613789b1-3b13-46b0-9ab5-36e33481cea6.jpg?alt=media&token=8d1fd0a4-63c3-483c-825a-f2bfadc5b1c2",
   "homepageHeroBgUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F27121c53-b051-497a-8e7b-0e03f18d03c6.jpg?alt=media&token=13eead81-e277-427c-ab77-41b5c5784f63",
-  "introVideoUrl": ""
+  "promoMessageText": "🚨 NEW DROP EST DISPONIBLE 🚨\n\nLes nouvelles références sont arrivées. 👀🔥\n\n📲 La mini-application est opérationnelle pour passer vos commandes.\nAppuyez sur 🛒 Shop pour y accéder directement.\n\n⚠️ Si vous n’avez pas encore accès, envoyez votre ID en privé afin d’être ajouté à la liste d’accès.\n@BISCOTTIBOY10\n\nBonne découverte à tous. 💨",
+  "appDisabled": false,
+  "introBgUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F65be0a5c-21f4-42e9-ae90-c82cfca03e77.jpg?alt=media&token=5592f94a-1ed3-4b13-bd2a-dd16526e9d12",
+  "telegramSupportUrl": "https://t.me/BISCOTTIBOY10",
+  "telegramChannelUrl": "https://t.me/+bMAog56A3AthODM0",
+  "promoButtonText": "Boutique 🛍️"
 }

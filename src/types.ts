@@ -82,12 +82,12 @@ export interface VideoItem {
 }
 
 export function getCleanAuthor(author?: string): string {
-  if (!author) return 'TRICOME LABZ';
+  if (!author) return 'GREENFARMEZ ELANASSER';
   const clean = author.trim();
-  if (/shelfterps|shelf\s*terps|laanassar|anassar|biscotti/i.test(clean)) {
-    return 'TRICOME LABZ';
+  if (/shelfterps|shelf\s*terps|laanassar|anassar|biscotti|tricom/i.test(clean)) {
+    return 'GREENFARMEZ ELANASSER';
   }
-  return clean || 'TRICOME LABZ';
+  return clean || 'GREENFARMEZ ELANASSER';
 }
 
 export interface CartItem {
@@ -159,7 +159,7 @@ export const DEFAULT_MARQUEE_CONFIG: MarqueeConfig = {
   enabled: true,
   speed: 'medium',
   items: [
-    { id: 'm1', text: '💎 TRICOME LABZ — SÉLECTION OFFICIELLE 💎', active: true, order: 1 },
+    { id: 'm1', text: '💎 GREENFARMEZ ELANASSER — SÉLECTION OFFICIELLE 💎', active: true, order: 1 },
     { id: 'm2', text: '🇪🇸 MÁLAGA • 🇪🇸 SEVILLA • 🇪🇸 BARCELONA • 🇳🇱 AMSTERDAM • 🇩🇪 GERMANY', active: true, order: 2 },
     { id: 'm3', text: '🚀 EXPÉDITION & RETRAIT 24H/48H DISCRÈTE & SÉCURISÉE', active: true, order: 3 },
     { id: 'm4', text: '✨ EXTRACTIONS D\'EXCEPTION & SÉLECTIONS D\'ÉLITE', active: true, order: 4 },
