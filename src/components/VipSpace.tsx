@@ -325,7 +325,7 @@ export default function VipSpace({
           <div className="flex items-center gap-2">
             <Award className="w-4 h-4 text-[#D4AF37]" />
             <span className="font-mono text-xs font-black tracking-[0.2em] text-neutral-100 uppercase">
-              ESPACE MEMBRE VIP — GREENFARMEZ ELANASSER
+              ESPACE MEMBRE VIP — TRICOME LABZ
             </span>
           </div>
           <button 
@@ -394,7 +394,7 @@ export default function VipSpace({
                       PRIVATE RESERVE
                     </span>
                     <span className="font-display text-lg font-light tracking-[0.22em] text-white uppercase leading-tight mt-1">
-                      GREENFARMEZ ELANASSER
+                      TRICOME LABZ
                     </span>
                   </div>
                   
@@ -714,7 +714,7 @@ export default function VipSpace({
             <div className="p-3 border border-zinc-900 bg-zinc-950/20 rounded-2xl opacity-65 flex gap-2.5 items-start text-[8px] font-mono text-zinc-500 leading-relaxed uppercase">
               <QrCode className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
               <p>
-                Espace Cryptographique GREENFARMEZ ELANASSER. Les informations d'expédition et les statistiques de fidélité sont stockées de manière pseudonymisée et chiffrée de bout en bout.
+                Espace Cryptographique TRICOME LABZ. Les informations d'expédition et les statistiques de fidélité sont stockées de manière pseudonymisée et chiffrée de bout en bout.
               </p>
             </div>
 

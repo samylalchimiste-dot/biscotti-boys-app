@@ -70,8 +70,8 @@ export default function CartDrawer({
   const [customerName, setCustomerName] = useState<string>('');
   const [emailAddress, setEmailAddress] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const [country, setCountry] = useState<string>('France');
-  const [city, setCity] = useState<string>('Paris');
+  const [country, setCountry] = useState<string>('Maroc');
+  const [city, setCity] = useState<string>('Casablanca');
   const [zipCode, setZipCode] = useState<string>('');
   const [address, setAddress] = useState<string>('');
   const [deliveryNotes, setDeliveryNotes] = useState<string>('');
@@ -253,7 +253,7 @@ export default function CartDrawer({
       const count = i.packCount || 1;
       return `• ${i.title} (${qtyLabel}) ${count > 1 ? `x${count} ` : ''}= ${i.totalPrice || (i.price * count)}€`;
     }).join('\n');
-    const text = `🛍️ COMMANDE GREENFARMEZ ELANASSER\nID: #${createdOrder.id}\nClient: ${createdOrder.customerName}\nContact: ${createdOrder.phoneNumber || createdOrder.email}\nLivraison: ${createdOrder.address}\n\nArticles:\n${itemsList}\n\nTotal: ${createdOrder.totalAmount}€\nStatut: En attente de validation`;
+    const text = `🛍️ COMMANDE TRICOME LABZ\nID: #${createdOrder.id}\nClient: ${createdOrder.customerName}\nContact: ${createdOrder.phoneNumber || createdOrder.email}\nLivraison: ${createdOrder.address}\n\nArticles:\n${itemsList}\n\nTotal: ${createdOrder.totalAmount}€\nStatut: En attente de validation`;
     
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -310,7 +310,7 @@ export default function CartDrawer({
                 <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
               </h2>
               <span className="text-[10px] font-mono text-zinc-400">
-                GREENFARMEZ ELANASSER • SÉLECTION OFFICIELLE
+                TRICOME LABZ • SÉLECTION OFFICIELLE
               </span>
             </div>
           </div>
@@ -611,7 +611,7 @@ export default function CartDrawer({
                         type="text"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
-                        placeholder="Ex: Paris, Lyon, Casablanca..."
+                        placeholder="Ex: Casablanca, Rabat, Marrakech..."
                         className="w-full px-3 py-2 rounded-xl bg-black border border-white/15 text-white focus:outline-none focus:border-amber-400"
                       />
                     </div>
@@ -622,7 +622,7 @@ export default function CartDrawer({
                         type="text"
                         value={zipCode}
                         onChange={(e) => setZipCode(e.target.value)}
-                        placeholder="75000"
+                        placeholder="20000"
                         className="w-full px-3 py-2 rounded-xl bg-black border border-white/15 text-white focus:outline-none focus:border-amber-400"
                       />
                     </div>
@@ -764,7 +764,7 @@ export default function CartDrawer({
                     handleCopyOrderSummary();
                     triggerHaptic('heavy');
                     const orderText = encodeURIComponent(
-                      `🛍️ COMMANDE GREENFARMEZ ELANASSER\n` +
+                      `🛍️ COMMANDE TRICOME LABZ\n` +
                       `Numéro: #${createdOrder.id}\n` +
                       `Client: ${createdOrder.customerName}\n` +
                       `Contact: ${createdOrder.phoneNumber || createdOrder.email}\n` +

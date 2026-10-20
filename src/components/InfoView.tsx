@@ -26,7 +26,7 @@ export default function InfoView({ triggerHaptic, onNavigateTab }: InfoViewProps
     },
     {
       q: 'Quels sont les délais et modes d\'expédition ?',
-      a: 'Les commandes sont traitées et remises au transporteur sous 24h. Le délai moyen est de 24h à 48h selon votre localisation (France, Europe, etc.). Un numéro de suivi vous est transmis.'
+      a: 'Les commandes sont traitées et remises au transporteur sous 24h. Le délai moyen est de 24h à 48h selon votre ville au Maroc (Casablanca, Rabat, Marrakech, Tanger, etc.). Un numéro de suivi vous est transmis.'
     },
     {
       q: 'Quels sont les moyens de règlement et comment s\'effectue le paiement ?',

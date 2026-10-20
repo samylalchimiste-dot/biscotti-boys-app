@@ -218,10 +218,10 @@ export default function ProductDetailModal({
             ) : (
               <div className="w-full h-full bg-zinc-950 flex flex-col justify-center items-center text-center p-6 select-none font-mono">
                 <div className="w-12 h-12 rounded-full border border-amber-500/30 flex items-center justify-center bg-black text-amber-400 text-sm font-black mb-2 shadow-lg">
-                  GF
+                  TL
                 </div>
                 <span className="text-[10px] uppercase font-black tracking-widest text-amber-300">
-                  GREENFARMEZ ELANASSER
+                  TRICOME LABZ
                 </span>
                 <span className="text-[8px] uppercase text-zinc-400 mt-0.5">
                   BOUTIQUE OFFICIELLE

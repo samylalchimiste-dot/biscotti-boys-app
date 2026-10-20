@@ -3,7 +3,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export type SupportedCity = 'malaga' | 'sevilla' | 'barcelona' | 'amsterdam' | 'germany';
+export type SupportedCity =
+  | 'casablanca'
+  | 'rabat'
+  | 'marrakech'
+  | 'tanger'
+  | 'agadir'
+  | 'fes';
 
 export interface CityOption {
   id: SupportedCity;
@@ -15,11 +21,12 @@ export interface CityOption {
 }
 
 export const SUPPORTED_CITIES: CityOption[] = [
-  { id: 'malaga', name: 'Málaga', country: 'Espagne', flag: '🇪🇸', subtitle: 'Costa del Sol Reserve' },
-  { id: 'sevilla', name: 'Sevilla', country: 'Espagne', flag: '🇪🇸', subtitle: 'Andalucía Selection' },
-  { id: 'barcelona', name: 'Barcelona', country: 'Espagne', flag: '🇪🇸', subtitle: 'Catalonia Club Private' },
-  { id: 'amsterdam', name: 'Amsterdam', country: 'Pays-Bas', flag: '🇳🇱', subtitle: 'Dam Connoisseur Menu' },
-  { id: 'germany', name: 'Germany', country: 'Deutschland', flag: '🇩🇪', subtitle: 'Federal Top Shelf' },
+  { id: 'casablanca', name: 'Casablanca', country: 'Maroc', flag: '🇲🇦', subtitle: 'Grand Casablanca VIP Reserve' },
+  { id: 'rabat', name: 'Rabat', country: 'Maroc', flag: '🇲🇦', subtitle: 'Capitale VIP Drop & Express' },
+  { id: 'marrakech', name: 'Marrakech', country: 'Maroc', flag: '🇲🇦', subtitle: 'Ville Ocre Private Reserve' },
+  { id: 'tanger', name: 'Tanger', country: 'Maroc', flag: '🇲🇦', subtitle: 'Détroit Premium Selection' },
+  { id: 'agadir', name: 'Agadir', country: 'Maroc', flag: '🇲🇦', subtitle: 'Souss Coast Reserve' },
+  { id: 'fes', name: 'Fès', country: 'Maroc', flag: '🇲🇦', subtitle: 'Imperial Heritage Selection' },
 ];
 
 export function isProductInCity(product: VideoItem, cityId?: SupportedCity | string | null): boolean {
@@ -82,12 +89,12 @@ export interface VideoItem {
 }
 
 export function getCleanAuthor(author?: string): string {
-  if (!author) return 'GREENFARMEZ ELANASSER';
+  if (!author) return 'TRICOME LABZ';
   const clean = author.trim();
-  if (/shelfterps|shelf\s*terps|laanassar|anassar|biscotti|tricom/i.test(clean)) {
-    return 'GREENFARMEZ ELANASSER';
+  if (/shelfterps|shelf\s*terps|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti/i.test(clean)) {
+    return 'TRICOME LABZ';
   }
-  return clean || 'GREENFARMEZ ELANASSER';
+  return clean || 'TRICOME LABZ';
 }
 
 export interface CartItem {
@@ -159,9 +166,9 @@ export const DEFAULT_MARQUEE_CONFIG: MarqueeConfig = {
   enabled: true,
   speed: 'medium',
   items: [
-    { id: 'm1', text: '💎 GREENFARMEZ ELANASSER — SÉLECTION OFFICIELLE 💎', active: true, order: 1 },
-    { id: 'm2', text: '🇪🇸 MÁLAGA • 🇪🇸 SEVILLA • 🇪🇸 BARCELONA • 🇳🇱 AMSTERDAM • 🇩🇪 GERMANY', active: true, order: 2 },
-    { id: 'm3', text: '🚀 EXPÉDITION & RETRAIT 24H/48H DISCRÈTE & SÉCURISÉE', active: true, order: 3 },
+    { id: 'm1', text: '💎 TRICOME LABZ — SÉLECTION OFFICIELLE 💎', active: true, order: 1 },
+    { id: 'm2', text: '🇲🇦 CASABLANCA • 🇲🇦 RABAT • 🇲🇦 MARRAKECH • 🇲🇦 TANGER • 🇲🇦 AGADIR • 🇲🇦 FÈS', active: true, order: 2 },
+    { id: 'm3', text: '🚀 EXPÉDITION & RETRAIT 24H/48H PARTOUT AU MAROC', active: true, order: 3 },
     { id: 'm4', text: '✨ EXTRACTIONS D\'EXCEPTION & SÉLECTIONS D\'ÉLITE', active: true, order: 4 },
     { id: 'm5', text: '👑 ESPACE VIP : OFFRES RÉSERVÉES & CATALOGUE EXCLUSIF', active: true, order: 5 },
   ],

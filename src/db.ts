@@ -115,7 +115,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     },
     thumbnailUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Ff05a58c4-9485-403a-bc28-ebc611ad726f.jpg?alt=media&token=290b9338-3a98-4d37-ba9d-96b706ba2074',
     description: '— Un profil fruité et gourmand mêlant des notes de pêche douce, raisin mûr et une touche de citron frais. Un mélange sucré, tropical et légèrement acidulé, avec une belle fraîcheur en bouche.',
-    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
+    cities: ['casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes'],
     pricePerGram: 700,
     isPremium: true,
     isFeatured: true,
@@ -127,7 +127,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 1252,
     city: 'all',
     imageUrl: '',
-    author: 'GREENFARMEZ ELANASSER',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   },
   {
@@ -136,7 +136,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     description: 'Notes gourmandes d’agrumes confits, de fruits tropicaux et de sorbet crémeux. Une saveur riche, douce et parfaitement équilibrée, avec une finale sucrée, onctueuse et ultra parfumée',
     category: 'STATIC',
     city: 'all',
-    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
+    cities: ['casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes'],
     pricing: {
       '500g': 2650,
       '50g': 800,
@@ -153,7 +153,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 878,
     isPremium: true,
     isFeatured: true,
-    author: 'GREENFARMEZ ELANASSER',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   },
   {
@@ -163,7 +163,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     category: 'STATIC',
     badge: 'IN_STOCK',
     city: 'all',
-    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
+    cities: ['casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes'],
     pricing: {
       '500g': 2650,
       '100g': 700,
@@ -180,7 +180,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 1139,
     isPremium: true,
     isFeatured: true,
-    author: 'GREENFARMEZ ELANASSER',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   },
   {
@@ -189,7 +189,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     description: '• Notes de burger grillé, d’ail et de gaz, avec une finition crémeuse et épicée. 🍔⛽🔥',
     category: 'FROZEN',
     city: 'all',
-    cities: ['germany', 'malaga', 'sevilla', 'barcelona', 'amsterdam'],
+    cities: ['casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes'],
     pricing: {
       '100g': 350,
       '50g': 200,
@@ -206,7 +206,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 624,
     isPremium: true,
     isFeatured: true,
-    author: 'GREENFARMEZ ELANASSER',
+    author: 'TRICOME LABZ',
     currency: 'EUR'
   }
 ];
@@ -239,8 +239,8 @@ function filterForbiddenProducts(list: VideoItem[]): VideoItem[] {
         ? p.cities.map((c: any) => String(c).toLowerCase())
         : (p.city ? [String(p.city).toLowerCase()] : undefined),
       author: getCleanAuthor(p.author),
-      title: (p.title || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'GREENFARMEZ ELANASSER'),
-      description: (p.description || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'GREENFARMEZ ELANASSER'),
+      title: (p.title || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
+      description: (p.description || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
       currency: 'EUR'
     }));
 }
@@ -530,7 +530,7 @@ export async function deleteOrder(orderId: string): Promise<void> {
 
 export async function getBrandingSettings(): Promise<BrandingSettings> {
   const defaultTitles: SectionTitle[] = [
-    { id: '1', text: 'GREENFARMEZ ELANASSER', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+    { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
     { id: '2', text: 'SELECTION DRY', category: 'DRY', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
     { id: '3', text: 'SELECTION FROZEN', category: 'FROZEN', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
     { id: '4', text: 'SELECTION STATIC', category: 'STATIC', size: 'L', color: '#D4AF37', enabled: true, order: 4 }
@@ -545,7 +545,7 @@ export async function getBrandingSettings(): Promise<BrandingSettings> {
     bgLogoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F472aec04-54b1-4a97-b151-f963de73dad6.jpg?alt=media&token=9ed1bf13-9104-430d-b777-8887071a0e7e',
     logoUrl: '/tricoma_logo.jpg',
     promoImageUrl: '/tricoma_logo.jpg',
-    introStatusLine: 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE',
+    introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
     telegramChannelUrl: 'https://t.me/+bMAog56A3AthODM0',
     telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
     signalUrl: 'https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa',

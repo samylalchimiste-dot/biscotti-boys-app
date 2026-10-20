@@ -215,7 +215,7 @@ export default function HomeView({
         <div className="relative aspect-[16/10] sm:aspect-[16/8] w-full overflow-hidden flex items-center justify-center bg-black">
           <img
             src={heroImageUrl}
-            alt="GREENFARMEZ ELANASSER"
+            alt="TRICOME LABZ"
             className="w-full h-full object-cover object-center"
             loading="eager"
             onError={(e) => {

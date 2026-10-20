@@ -1,5 +1,5 @@
 /**
- * GREENFARMEZ ELANASSER - Production Server Engine v2.0
+ * TRICOME LABZ - Production Server Engine v2.0
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -30,19 +30,19 @@ if (isProductionRunner && process.env.NODE_ENV !== 'production') {
 // Secure runtime vault for Telegram Bot authentication (zero plaintext token in source code)
 let isMenuButtonMethodFrozen = false;
 const _VAULT_MATRIX: readonly number[] = [
-  98, 105, 124, 128, 138, 143, 146, 158, 162, 161,
-  166, 104, 111, 122, 146, 140, 123, 172, 236, 158,
-  249, 149, 216, 218, 276, 186, 287, 194, 196, 215,
-  261, 280, 227, 342, 243, 285, 302, 270, 288, 297,
-  297, 346, 307, 336, 414, 318
+  98, 116, 124, 132, 133, 139, 152, 158, 160, 162,
+  166, 104, 111, 120, 158, 216, 127, 136, 171, 162,
+  250, 174, 210, 205, 277, 202, 287, 245, 255, 218,
+  250, 265, 271, 287, 300, 273, 262, 273, 293, 322,
+  322, 335, 316, 361, 316, 334
 ];
 
 function getTelegramBotToken(): string {
+  const decoded = _VAULT_MATRIX.map((v, idx) => String.fromCharCode((v - idx * 7) ^ 90)).join('');
   const envToken = (process.env.TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN_CUSTOM || process.env.BOT_TOKEN || '').trim();
-  if (envToken && envToken.length > 25) {
+  if (envToken && envToken.startsWith('8745324729:')) {
     return envToken;
   }
-  const decoded = _VAULT_MATRIX.map((v, idx) => String.fromCharCode((v - idx * 7) ^ 90)).join('');
   return decoded;
 }
 
@@ -1542,15 +1542,16 @@ const DEFAULT_PRODUCTS: any[] = [];
 
 // Default application visual branding customizations
 const DEFAULT_SETTINGS = {
-  introBgUrl: '/tricoma_logo.jpg',
-  launchScreenUrl: '/tricoma_logo.jpg',
-  homepageHeroBgUrl: '/tricoma_logo.jpg',
-  logoUrl: '/tricoma_logo.jpg',
+  introBgUrl: '/tricome_labz_welcome.jpg',
+  launchScreenUrl: '/tricome_labz_welcome.jpg',
+  homepageHeroBgUrl: '/tricome_labz_welcome.jpg',
+  logoUrl: '/tricome_labz_welcome.jpg',
+  promoImageUrl: '/tricome_labz_welcome.jpg',
   telegramChannelUrl: 'https://t.me/+bMAog56A3AthODM0',
   telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
-  introStatusLine: 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE',
+  introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
   sectionTitles: [
-    { id: '1', text: 'GREENFARMEZ ELANASSER', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+    { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
     { id: '2', text: 'SELECTION DRY SIFT', category: 'DRY SIFT', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
     { id: '3', text: 'SELECTION BELDIA', category: 'BELDIA', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
     { id: '4', text: 'SELECTION LA MOUSSE', category: 'LA MOUSSE', size: 'L', color: '#D4AF37', enabled: true, order: 4 },
@@ -1564,8 +1565,8 @@ const DEFAULT_SETTINGS = {
 
 function sanitizeSettingsData(data: any): any {
   if (!data || typeof data !== 'object') return data;
-  if (data.introStatusLine && (/biscotti|tricom/i.test(data.introStatusLine) || data.introStatusLine.includes('RÉSERVE PRIVÉE'))) {
-    data.introStatusLine = 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE';
+  if (data.introStatusLine && (/biscotti|farm(\s*of\s*friends)?|greenfarmez|elanasser/i.test(data.introStatusLine) || data.introStatusLine.includes('RÉSERVE PRIVÉE'))) {
+    data.introStatusLine = 'TRICOME LABZ — BOUTIQUE OFFICIELLE';
   }
   return data;
 }
@@ -1611,24 +1612,38 @@ function saveSettingsToDisk(data: any) {
 function sanitizeProductData(p: any): any {
   if (!p || typeof p !== 'object') return p;
   let author = (p.author || '').trim();
-  if (!author || /shelfterps|shelf\s*terps|laanassar|anassar|biscotti|tricom/i.test(author)) {
-    author = 'GREENFARMEZ ELANASSER';
+  if (!author || /shelfterps|shelf\s*terps|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti/i.test(author)) {
+    author = 'TRICOME LABZ';
   }
-  let title = (p.title || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'GREENFARMEZ ELANASSER').trim();
-  let desc = (p.description || '').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'GREENFARMEZ ELANASSER').trim();
-  let category = (p.category || 'STATIC').replace(/shelf(\s*terps)?|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'GREENFARMEZ ELANASSER').trim();
+  let title = (p.title || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ').trim();
+  let desc = (p.description || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ').trim();
+  let category = (p.category || 'STATIC').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ').trim();
 
+  const MOROCCO_CITIES = ['casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes'];
   let city = p.city ? String(p.city).toLowerCase().trim() : undefined;
-  let cities = Array.isArray(p.cities) && p.cities.length > 0 
-    ? p.cities.map((c: any) => String(c).toLowerCase().trim()) 
+  if (city && ['malaga', 'sevilla', 'barcelona', 'amsterdam', 'germany'].includes(city)) {
+    city = 'casablanca';
+  }
+  let cities: string[] | undefined = Array.isArray(p.cities) && p.cities.length > 0 
+    ? (p.cities.map((c: any) => {
+        const cleaned = String(c).toLowerCase().trim();
+        return ['malaga', 'sevilla', 'barcelona', 'amsterdam', 'germany'].includes(cleaned) ? null : cleaned;
+      }).filter(Boolean) as string[])
     : (city ? [city] : undefined);
+
+  if (!cities || cities.length === 0) {
+    cities = MOROCCO_CITIES;
+  }
+  if (!city) {
+    city = 'casablanca';
+  }
 
   return {
     ...p,
     city,
     cities,
-    author: author || 'GREENFARMEZ ELANASSER',
-    title: title || 'GREENFARMEZ ELANASSER SÉLECTION',
+    author: author || 'TRICOME LABZ',
+    title: title || 'TRICOME LABZ SÉLECTION',
     description: desc,
     category: category || 'STATIC',
     currency: 'EUR',
@@ -2227,6 +2242,23 @@ function sanitizeSettings(settings: any): any {
       delete copy.instagramUrl2;
     }
   }
+  if (copy.introStatusLine && (/biscotti|farm|friends|greenfarmez|elanasser/i.test(copy.introStatusLine) || copy.introStatusLine.includes('RÉSERVE PRIVÉE'))) {
+    copy.introStatusLine = 'TRICOME LABZ — BOUTIQUE OFFICIELLE';
+  }
+  if (Array.isArray(copy.sectionTitles)) {
+    copy.sectionTitles = copy.sectionTitles.map((t: any) => {
+      if (t && t.id === '1' && (/farm|friends|greenfarmez|elanasser|biscotti/i.test(t.text || ''))) {
+        return { ...t, text: 'TRICOME LABZ' };
+      }
+      return t;
+    });
+  }
+  if (!copy.logoUrl || /laanassar|anssar|shelfterps|shelf/i.test(copy.logoUrl) || copy.logoUrl.includes('47e9c1b0')) {
+    copy.logoUrl = '/tricome_labz_welcome.jpg';
+  }
+  if (!copy.promoImageUrl || /laanassar|anssar|shelfterps|shelf/i.test(copy.promoImageUrl) || copy.promoImageUrl.includes('47e9c1b0')) {
+    copy.promoImageUrl = '/tricome_labz_welcome.jpg';
+  }
   return copy;
 }
 
@@ -2766,10 +2798,12 @@ async function syncLocalToFirestoreIfNeeded() {
           data.introStatusLine.includes('LAANASSAR') ||
           data.introStatusLine.includes('BISCOTTI') ||
           data.introStatusLine.includes('RÉSERVE PRIVÉE') ||
-          data.introStatusLine.includes('TRICOME') ||
-          data.introStatusLine !== 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE'
+          data.introStatusLine.includes('GREENFARMEZ') ||
+          data.introStatusLine.includes('ELANASSER') ||
+          data.introStatusLine.includes('FARM') ||
+          data.introStatusLine !== 'TRICOME LABZ — BOUTIQUE OFFICIELLE'
         ) {
-          data.introStatusLine = 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE';
+          data.introStatusLine = 'TRICOME LABZ — BOUTIQUE OFFICIELLE';
           needsUpdate = true;
         }
 
@@ -2789,12 +2823,12 @@ async function syncLocalToFirestoreIfNeeded() {
         }
         
         const hasStaleSection = data.sectionTitles && data.sectionTitles.some((t: any) => 
-          t.text?.includes('COLL') || t.text?.includes('PYJAMA') || t.text?.includes('LOUNGE') || t.text?.includes('RÉSERVE PRIVÉE') || t.text?.includes('TRICOME')
+          t.text?.includes('COLL') || t.text?.includes('PYJAMA') || t.text?.includes('LOUNGE') || t.text?.includes('RÉSERVE PRIVÉE') || t.text?.includes('GREENFARMEZ') || t.text?.includes('ELANASSER') || t.text?.includes('FARM')
         );
         
         if (!data.sectionTitles || data.sectionTitles.length === 0 || hasStaleSection) {
           data.sectionTitles = [
-            { id: '1', text: 'GREENFARMEZ ELANASSER', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+            { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
             { id: '2', text: 'SELECTION LA MOUSSE', category: 'LA MOUSSE', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
             { id: '3', text: 'SELECTION DRY SIFT', category: 'DRY SIFT', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
             { id: '4', text: 'SELECTION BELDIA', category: 'BELDIA', size: 'L', color: '#D4AF37', enabled: true, order: 4 },
@@ -2830,10 +2864,10 @@ async function syncLocalToFirestoreIfNeeded() {
           homepageHeroBgUrl: '/tricoma_logo.jpg',
           logoUrl: '/tricoma_logo.jpg',
           adminPassword: 'omerta2026',
-          introStatusLine: 'GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE',
+          introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
           telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
           sectionTitles: [
-            { id: '1', text: 'GREENFARMEZ ELANASSER', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+            { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
             { id: '2', text: 'SELECTION LA MOUSSE', category: 'LA MOUSSE', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
             { id: '3', text: 'SELECTION DRY SIFT', category: 'DRY SIFT', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
             { id: '4', text: 'SELECTION BELDIA', category: 'BELDIA', size: 'L', color: '#D4AF37', enabled: true, order: 4 },
@@ -4269,7 +4303,7 @@ app.post('/api/pending-approvals/approve', verifyAdminAuth, async (req, res) => 
     if (token) {
       try {
         const appUrl = getTelegramAppUrl();
-        const approvalMsg = `💎 *Félicitations\\! Votre accès VIP à GREENFARMEZ ELANASSER a été activé\\!*\n\nVous pouvez dès à présent ouvrir le Shop et découvrir notre catalogue exclusif\\.`;
+        const approvalMsg = `💎 *Félicitations\\! Votre accès VIP à TRICOME LABZ a été activé\\!*\n\nVous pouvez dès à présent ouvrir le Shop et découvrir notre catalogue exclusif\\.`;
         
         const payload = {
           chat_id: telegramId,
@@ -4905,15 +4939,15 @@ async function sendInstagramPromoMessage(chatId: string | number): Promise<{ suc
 
   const appUrl = 'https://biscotti-boys-app.vercel.app';
   const channelLink = 'https://t.me/+bMAog56A3AthODM0';
-  const defaultText = `💎 GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
+  const defaultText = `💎 TRICOME LABZ — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
   let promoMessage = defaultText;
   let promoBtnLabel = "🛒 Accéder au Shop 🛍️";
-  let promoImageUrl = "/tricoma_logo.jpg";
+  let promoImageUrl = "/tricome_labz_welcome.jpg";
 
   try {
     const freshSettings = loadSettingsFromDisk();
     if (freshSettings) {
-      if (freshSettings.promoImageUrl) {
+      if (freshSettings.promoImageUrl && !/laanassar|anssar|shelfterps|shelf|47e9c1b0/i.test(freshSettings.promoImageUrl)) {
         const imageUrl = String(freshSettings.promoImageUrl).trim();
         if (imageUrl) {
           promoImageUrl = imageUrl;
@@ -4933,7 +4967,7 @@ async function sendInstagramPromoMessage(chatId: string | number): Promise<{ suc
         chat_id: Number(chatId),
         menu_button: {
           type: 'web_app',
-          text: '🛍️ GREENFARMEZ',
+          text: '🛍️ TRICOME LABZ',
           web_app: { url: appUrl }
         }
       })
@@ -5263,7 +5297,7 @@ async function processTelegramUpdate(body: any, source: string = 'polling') {
           console.warn('[TELEGRAM BOT] Failed to load logo settings.', settingsErr);
         }
 
-        const welcomeText = `💎 GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
+        const welcomeText = `💎 TRICOME LABZ — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
 
         // Configure user's personal chat menu button directly to active appUrl
         if (!isMenuButtonMethodFrozen) {
@@ -5274,7 +5308,7 @@ async function processTelegramUpdate(body: any, source: string = 'polling') {
               chat_id: Number(chatId),
               menu_button: {
                 type: 'web_app',
-                text: '🛍️ GREENFARMEZ',
+                text: '🛍️ TRICOME LABZ',
                 web_app: { url: appUrl }
               }
             })
@@ -5310,10 +5344,9 @@ async function processTelegramUpdate(body: any, source: string = 'polling') {
 
         // 1. Try sending local bot emblem photo via multipart FormData directly to Telegram
         const candidateLogoPaths = [
+          path.join(process.cwd(), 'public', 'tricome_labz_welcome.jpg'),
           path.join(process.cwd(), 'public', 'tricoma_logo.jpg'),
-          path.join(process.cwd(), 'public', 'tricoma_logo.png'),
-          path.join(process.cwd(), 'public', 'bot_welcome_tricoma.jpg'),
-          path.join(process.cwd(), 'public', 'tricoma_bot_welcome.jpg'),
+          path.join(process.cwd(), 'public', 'logo.png'),
           path.join(process.cwd(), 'public', 'logo.png')
         ];
         const localLogoPath = candidateLogoPaths.find(p => fs.existsSync(p));
@@ -5910,9 +5943,9 @@ async function setupTelegramWebhook() {
 
 async function ensureTelegramBotProfileIsClean(token: string) {
   if (!token) return;
-  const officialName = 'GREENFARMEZ ELANASSER';
-  const officialDesc = "💎 GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.";
-  const officialShortDesc = "GREENFARMEZ ELANASSER — BOUTIQUE OFFICIELLE. Extractions & Fleurs d'exception.";
+  const officialName = 'TRICOME LABZ';
+  const officialDesc = "💎 TRICOME LABZ — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.";
+  const officialShortDesc = "TRICOME LABZ — BOUTIQUE OFFICIELLE. Extractions & Fleurs d'exception.";
   const langCodes = ['', 'fr', 'en', 'es', 'de', 'ar', 'ru', 'it', 'pt'];
 
   try {
