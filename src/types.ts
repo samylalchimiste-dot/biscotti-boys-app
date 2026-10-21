@@ -89,12 +89,12 @@ export interface VideoItem {
 }
 
 export function getCleanAuthor(author?: string): string {
-  if (!author) return 'TRICOME LABZ';
+  if (!author) return 'HOUSE OF RIF FARMZ';
   const clean = author.trim();
-  if (/shelfterps|shelf\s*terps|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti/i.test(clean)) {
-    return 'TRICOME LABZ';
+  if (/shelfterps|shelf\s*terps|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti|tricom(e|\s*labz)?|lost\s*in\s*(the\s*)?rif/i.test(clean)) {
+    return 'HOUSE OF RIF FARMZ';
   }
-  return clean || 'TRICOME LABZ';
+  return clean || 'HOUSE OF RIF FARMZ';
 }
 
 export interface CartItem {
@@ -166,7 +166,7 @@ export const DEFAULT_MARQUEE_CONFIG: MarqueeConfig = {
   enabled: true,
   speed: 'medium',
   items: [
-    { id: 'm1', text: '💎 TRICOME LABZ — SÉLECTION OFFICIELLE 💎', active: true, order: 1 },
+    { id: 'm1', text: '💎 HOUSE OF RIF FARMZ — SÉLECTION OFFICIELLE 💎', active: true, order: 1 },
     { id: 'm2', text: '🇲🇦 CASABLANCA • 🇲🇦 RABAT • 🇲🇦 MARRAKECH • 🇲🇦 TANGER • 🇲🇦 AGADIR • 🇲🇦 FÈS', active: true, order: 2 },
     { id: 'm3', text: '🚀 EXPÉDITION & RETRAIT 24H/48H PARTOUT AU MAROC', active: true, order: 3 },
     { id: 'm4', text: '✨ EXTRACTIONS D\'EXCEPTION & SÉLECTIONS D\'ÉLITE', active: true, order: 4 },

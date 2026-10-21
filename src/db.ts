@@ -127,7 +127,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 1252,
     city: 'all',
     imageUrl: '',
-    author: 'TRICOME LABZ',
+    author: 'HOUSE OF RIF FARMZ',
     currency: 'EUR'
   },
   {
@@ -153,7 +153,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 878,
     isPremium: true,
     isFeatured: true,
-    author: 'TRICOME LABZ',
+    author: 'HOUSE OF RIF FARMZ',
     currency: 'EUR'
   },
   {
@@ -180,7 +180,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 1139,
     isPremium: true,
     isFeatured: true,
-    author: 'TRICOME LABZ',
+    author: 'HOUSE OF RIF FARMZ',
     currency: 'EUR'
   },
   {
@@ -206,7 +206,7 @@ export const DEFAULT_PRODUCTS: VideoItem[] = [
     views: 624,
     isPremium: true,
     isFeatured: true,
-    author: 'TRICOME LABZ',
+    author: 'HOUSE OF RIF FARMZ',
     currency: 'EUR'
   }
 ];
@@ -239,8 +239,8 @@ function filterForbiddenProducts(list: VideoItem[]): VideoItem[] {
         ? p.cities.map((c: any) => String(c).toLowerCase())
         : (p.city ? [String(p.city).toLowerCase()] : undefined),
       author: getCleanAuthor(p.author),
-      title: (p.title || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
-      description: (p.description || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ'),
+      title: (p.title || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?|lost\s*in\s*(the\s*)?rif/gi, 'HOUSE OF RIF FARMZ'),
+      description: (p.description || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?|lost\s*in\s*(the\s*)?rif/gi, 'HOUSE OF RIF FARMZ'),
       currency: 'EUR'
     }));
 }
@@ -530,7 +530,7 @@ export async function deleteOrder(orderId: string): Promise<void> {
 
 export async function getBrandingSettings(): Promise<BrandingSettings> {
   const defaultTitles: SectionTitle[] = [
-    { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+    { id: '1', text: 'HOUSE OF RIF FARMZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
     { id: '2', text: 'SELECTION DRY', category: 'DRY', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
     { id: '3', text: 'SELECTION FROZEN', category: 'FROZEN', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
     { id: '4', text: 'SELECTION STATIC', category: 'STATIC', size: 'L', color: '#D4AF37', enabled: true, order: 4 }
@@ -539,13 +539,13 @@ export async function getBrandingSettings(): Promise<BrandingSettings> {
   const defaultSettings: BrandingSettings = {
     promoMessageText: "🚨 NEW DROP EST DISPONIBLE 🚨\n\nLes nouvelles références sont arrivées. 👀🔥\n\n📲 La mini-application est opérationnelle pour passer vos commandes.\nAppuyez sur 🛒 Shop pour y accéder directement.\n\n⚠️ Si vous n’avez pas encore accès, envoyez votre ID en privé afin d’être ajouté à la liste d’accès.\n@BISCOTTIBOY10\n\nBonne découverte à tous. 💨",
     promoButtonText: 'Boutique 🛍️',
-    introBgUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F673c0e34-e91f-4473-a3aa-7a8258465a24.jpg?alt=media&token=15179363-85e3-45d8-aaab-ad495ae57342',
-    launchScreenUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F4acedce2-9ae4-45f8-807d-47f56c976aa4.jpg?alt=media&token=29314e82-c98b-40ae-8c4e-fac44f4c28ff',
-    homepageHeroBgUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F6b509227-efe3-45dc-87cb-44cdc569bdc1.jpg?alt=media&token=923678db-65d5-4627-9ffe-0b7448b73dfe',
-    bgLogoUrl: 'https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F472aec04-54b1-4a97-b151-f963de73dad6.jpg?alt=media&token=9ed1bf13-9104-430d-b777-8887071a0e7e',
-    logoUrl: '/tricoma_logo.jpg',
-    promoImageUrl: '/tricoma_logo.jpg',
-    introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
+    introBgUrl: '/house_of_rif_farmz_welcome.jpg',
+    launchScreenUrl: '/house_of_rif_farmz_welcome.jpg',
+    homepageHeroBgUrl: '/house_of_rif_farmz_welcome.jpg',
+    bgLogoUrl: '/house_of_rif_farmz_welcome.jpg',
+    logoUrl: '/house_of_rif_farmz_welcome.jpg',
+    promoImageUrl: '/house_of_rif_farmz_welcome.jpg',
+    introStatusLine: 'HOUSE OF RIF FARMZ — BOUTIQUE OFFICIELLE',
     telegramChannelUrl: 'https://t.me/+bMAog56A3AthODM0',
     telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
     signalUrl: 'https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa',

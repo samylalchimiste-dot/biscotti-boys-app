@@ -106,7 +106,7 @@ export default function SearchModal({
                     {cityInfo.flag} {cityInfo.name}
                   </span>
                 ) : (
-                  <span>TRICOME LABZ</span>
+                  <span>HOUSE OF RIF FARMZ</span>
                 )}
               </span>
             </div>

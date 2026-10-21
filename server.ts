@@ -1,5 +1,5 @@
 /**
- * TRICOME LABZ - Production Server Engine v2.0
+ * LOST IN THE RIF - Production Server Engine v2.0
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -30,17 +30,17 @@ if (isProductionRunner && process.env.NODE_ENV !== 'production') {
 // Secure runtime vault for Telegram Bot authentication (zero plaintext token in source code)
 let isMenuButtonMethodFrozen = false;
 const _VAULT_MATRIX: readonly number[] = [
-  98, 116, 124, 132, 133, 139, 152, 158, 160, 162,
-  166, 104, 111, 120, 158, 216, 127, 136, 171, 162,
-  250, 174, 210, 205, 277, 202, 287, 245, 255, 218,
-  250, 265, 271, 287, 300, 273, 262, 273, 293, 322,
-  322, 335, 316, 361, 316, 334
+  98, 116, 118, 126, 133, 134, 141, 147, 164, 162,
+  166, 104, 111, 119, 142, 210, 154, 132, 167, 174,
+  181, 207, 195, 217, 176, 210, 187, 224, 305, 251,
+  245, 257, 246, 241, 337, 291, 357, 319, 291, 314,
+  390, 297, 326, 406, 327, 364
 ];
 
 function getTelegramBotToken(): string {
   const decoded = _VAULT_MATRIX.map((v, idx) => String.fromCharCode((v - idx * 7) ^ 90)).join('');
   const envToken = (process.env.TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN_CUSTOM || process.env.BOT_TOKEN || '').trim();
-  if (envToken && envToken.startsWith('8745324729:')) {
+  if (envToken && envToken.startsWith('8723399869:')) {
     return envToken;
   }
   return decoded;
@@ -1542,16 +1542,16 @@ const DEFAULT_PRODUCTS: any[] = [];
 
 // Default application visual branding customizations
 const DEFAULT_SETTINGS = {
-  introBgUrl: '/tricome_labz_welcome.jpg',
-  launchScreenUrl: '/tricome_labz_welcome.jpg',
-  homepageHeroBgUrl: '/tricome_labz_welcome.jpg',
-  logoUrl: '/tricome_labz_welcome.jpg',
-  promoImageUrl: '/tricome_labz_welcome.jpg',
+  introBgUrl: '/lost_in_the_rif_welcome.jpg',
+  launchScreenUrl: '/lost_in_the_rif_welcome.jpg',
+  homepageHeroBgUrl: '/lost_in_the_rif_welcome.jpg',
+  logoUrl: '/lost_in_the_rif_welcome.jpg',
+  promoImageUrl: '/lost_in_the_rif_welcome.jpg',
   telegramChannelUrl: 'https://t.me/+bMAog56A3AthODM0',
   telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
-  introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
+  introStatusLine: 'LOST IN THE RIF — BOUTIQUE OFFICIELLE',
   sectionTitles: [
-    { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+    { id: '1', text: 'LOST IN THE RIF', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
     { id: '2', text: 'SELECTION DRY SIFT', category: 'DRY SIFT', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
     { id: '3', text: 'SELECTION BELDIA', category: 'BELDIA', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
     { id: '4', text: 'SELECTION LA MOUSSE', category: 'LA MOUSSE', size: 'L', color: '#D4AF37', enabled: true, order: 4 },
@@ -1565,8 +1565,8 @@ const DEFAULT_SETTINGS = {
 
 function sanitizeSettingsData(data: any): any {
   if (!data || typeof data !== 'object') return data;
-  if (data.introStatusLine && (/biscotti|farm(\s*of\s*friends)?|greenfarmez|elanasser/i.test(data.introStatusLine) || data.introStatusLine.includes('RÉSERVE PRIVÉE'))) {
-    data.introStatusLine = 'TRICOME LABZ — BOUTIQUE OFFICIELLE';
+  if (data.introStatusLine && (/biscotti|farm(\s*of\s*friends)?|greenfarmez|elanasser|tricom/i.test(data.introStatusLine) || data.introStatusLine.includes('RÉSERVE PRIVÉE') || data.introStatusLine !== 'LOST IN THE RIF — BOUTIQUE OFFICIELLE')) {
+    data.introStatusLine = 'LOST IN THE RIF — BOUTIQUE OFFICIELLE';
   }
   return data;
 }
@@ -1612,12 +1612,12 @@ function saveSettingsToDisk(data: any) {
 function sanitizeProductData(p: any): any {
   if (!p || typeof p !== 'object') return p;
   let author = (p.author || '').trim();
-  if (!author || /shelfterps|shelf\s*terps|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti/i.test(author)) {
-    author = 'TRICOME LABZ';
+  if (!author || /shelfterps|shelf\s*terps|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti|tricom/i.test(author)) {
+    author = 'LOST IN THE RIF';
   }
-  let title = (p.title || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ').trim();
-  let desc = (p.description || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ').trim();
-  let category = (p.category || 'STATIC').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?/gi, 'TRICOME LABZ').trim();
+  let title = (p.title || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'LOST IN THE RIF').trim();
+  let desc = (p.description || '').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'LOST IN THE RIF').trim();
+  let category = (p.category || 'STATIC').replace(/shelf(\s*terps)?|farm(\s*of\s*friends)?|greenfarmez|elanasser|laanassar|anassar|biscotti(\s*boys)?|tricom(e|\s*labz)?/gi, 'LOST IN THE RIF').trim();
 
   const MOROCCO_CITIES = ['casablanca', 'rabat', 'marrakech', 'tanger', 'agadir', 'fes'];
   let city = p.city ? String(p.city).toLowerCase().trim() : undefined;
@@ -1642,8 +1642,8 @@ function sanitizeProductData(p: any): any {
     ...p,
     city,
     cities,
-    author: author || 'TRICOME LABZ',
-    title: title || 'TRICOME LABZ SÉLECTION',
+    author: author || 'LOST IN THE RIF',
+    title: title || 'LOST IN THE RIF SÉLECTION',
     description: desc,
     category: category || 'STATIC',
     currency: 'EUR',
@@ -2242,22 +2242,22 @@ function sanitizeSettings(settings: any): any {
       delete copy.instagramUrl2;
     }
   }
-  if (copy.introStatusLine && (/biscotti|farm|friends|greenfarmez|elanasser/i.test(copy.introStatusLine) || copy.introStatusLine.includes('RÉSERVE PRIVÉE'))) {
-    copy.introStatusLine = 'TRICOME LABZ — BOUTIQUE OFFICIELLE';
+  if (copy.introStatusLine && (/biscotti|farm|friends|greenfarmez|elanasser|tricom/i.test(copy.introStatusLine) || copy.introStatusLine.includes('RÉSERVE PRIVÉE') || copy.introStatusLine.includes('TRICOME') || copy.introStatusLine !== 'LOST IN THE RIF — BOUTIQUE OFFICIELLE')) {
+    copy.introStatusLine = 'LOST IN THE RIF — BOUTIQUE OFFICIELLE';
   }
   if (Array.isArray(copy.sectionTitles)) {
     copy.sectionTitles = copy.sectionTitles.map((t: any) => {
-      if (t && t.id === '1' && (/farm|friends|greenfarmez|elanasser|biscotti/i.test(t.text || ''))) {
-        return { ...t, text: 'TRICOME LABZ' };
+      if (t && t.id === '1' && (/farm|friends|greenfarmez|elanasser|biscotti|tricom/i.test(t.text || '') || t.text?.includes('TRICOME'))) {
+        return { ...t, text: 'LOST IN THE RIF' };
       }
       return t;
     });
   }
-  if (!copy.logoUrl || /laanassar|anssar|shelfterps|shelf/i.test(copy.logoUrl) || copy.logoUrl.includes('47e9c1b0')) {
-    copy.logoUrl = '/tricome_labz_welcome.jpg';
+  if (!copy.logoUrl || /laanassar|anssar|shelfterps|shelf|tricom/i.test(copy.logoUrl) || copy.logoUrl.includes('47e9c1b0')) {
+    copy.logoUrl = '/lost_in_the_rif_welcome.jpg';
   }
-  if (!copy.promoImageUrl || /laanassar|anssar|shelfterps|shelf/i.test(copy.promoImageUrl) || copy.promoImageUrl.includes('47e9c1b0')) {
-    copy.promoImageUrl = '/tricome_labz_welcome.jpg';
+  if (!copy.promoImageUrl || /laanassar|anssar|shelfterps|shelf|tricom/i.test(copy.promoImageUrl) || copy.promoImageUrl.includes('47e9c1b0')) {
+    copy.promoImageUrl = '/lost_in_the_rif_welcome.jpg';
   }
   return copy;
 }
@@ -2801,9 +2801,10 @@ async function syncLocalToFirestoreIfNeeded() {
           data.introStatusLine.includes('GREENFARMEZ') ||
           data.introStatusLine.includes('ELANASSER') ||
           data.introStatusLine.includes('FARM') ||
-          data.introStatusLine !== 'TRICOME LABZ — BOUTIQUE OFFICIELLE'
+          data.introStatusLine.includes('TRICOM') ||
+          data.introStatusLine !== 'LOST IN THE RIF — BOUTIQUE OFFICIELLE'
         ) {
-          data.introStatusLine = 'TRICOME LABZ — BOUTIQUE OFFICIELLE';
+          data.introStatusLine = 'LOST IN THE RIF — BOUTIQUE OFFICIELLE';
           needsUpdate = true;
         }
 
@@ -2812,23 +2813,23 @@ async function syncLocalToFirestoreIfNeeded() {
           needsUpdate = true;
         }
 
-        if (!data.logoUrl || data.logoUrl.includes('biscotti') || data.logoUrl.includes('shelf')) {
-          data.logoUrl = '/tricoma_logo.jpg';
+        if (!data.logoUrl || data.logoUrl.includes('biscotti') || data.logoUrl.includes('shelf') || data.logoUrl.includes('47e9c1b0') || data.logoUrl.includes('tricom')) {
+          data.logoUrl = '/lost_in_the_rif_welcome.jpg';
           needsUpdate = true;
         }
 
-        if (!data.promoImageUrl || data.promoImageUrl.includes('biscotti') || data.promoImageUrl.includes('shelf')) {
-          data.promoImageUrl = '/tricoma_logo.jpg';
+        if (!data.promoImageUrl || data.promoImageUrl.includes('biscotti') || data.promoImageUrl.includes('shelf') || data.promoImageUrl.includes('tricom')) {
+          data.promoImageUrl = '/lost_in_the_rif_welcome.jpg';
           needsUpdate = true;
         }
         
         const hasStaleSection = data.sectionTitles && data.sectionTitles.some((t: any) => 
-          t.text?.includes('COLL') || t.text?.includes('PYJAMA') || t.text?.includes('LOUNGE') || t.text?.includes('RÉSERVE PRIVÉE') || t.text?.includes('GREENFARMEZ') || t.text?.includes('ELANASSER') || t.text?.includes('FARM')
+          t.text?.includes('COLL') || t.text?.includes('PYJAMA') || t.text?.includes('LOUNGE') || t.text?.includes('RÉSERVE PRIVÉE') || t.text?.includes('GREENFARMEZ') || t.text?.includes('ELANASSER') || t.text?.includes('FARM') || t.text?.includes('TRICOME')
         );
         
         if (!data.sectionTitles || data.sectionTitles.length === 0 || hasStaleSection) {
           data.sectionTitles = [
-            { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+            { id: '1', text: 'LOST IN THE RIF', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
             { id: '2', text: 'SELECTION LA MOUSSE', category: 'LA MOUSSE', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
             { id: '3', text: 'SELECTION DRY SIFT', category: 'DRY SIFT', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
             { id: '4', text: 'SELECTION BELDIA', category: 'BELDIA', size: 'L', color: '#D4AF37', enabled: true, order: 4 },
@@ -2859,15 +2860,15 @@ async function syncLocalToFirestoreIfNeeded() {
       } else {
         // Document does not exist in Firestore but we successfully queried it, so seed default settings
         const targetSettings = {
-          introBgUrl: '/tricoma_logo.jpg',
-          launchScreenUrl: '/tricoma_logo.jpg',
-          homepageHeroBgUrl: '/tricoma_logo.jpg',
-          logoUrl: '/tricoma_logo.jpg',
+          introBgUrl: '/lost_in_the_rif_welcome.jpg',
+          launchScreenUrl: '/lost_in_the_rif_welcome.jpg',
+          homepageHeroBgUrl: '/lost_in_the_rif_welcome.jpg',
+          logoUrl: '/lost_in_the_rif_welcome.jpg',
           adminPassword: 'omerta2026',
-          introStatusLine: 'TRICOME LABZ — BOUTIQUE OFFICIELLE',
+          introStatusLine: 'LOST IN THE RIF — BOUTIQUE OFFICIELLE',
           telegramSupportUrl: 'https://t.me/BISCOTTIBOY10',
           sectionTitles: [
-            { id: '1', text: 'TRICOME LABZ', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
+            { id: '1', text: 'LOST IN THE RIF', category: 'All', size: 'L', color: '#D4AF37', enabled: true, order: 1 },
             { id: '2', text: 'SELECTION LA MOUSSE', category: 'LA MOUSSE', size: 'L', color: '#D4AF37', enabled: true, order: 2 },
             { id: '3', text: 'SELECTION DRY SIFT', category: 'DRY SIFT', size: 'L', color: '#D4AF37', enabled: true, order: 3 },
             { id: '4', text: 'SELECTION BELDIA', category: 'BELDIA', size: 'L', color: '#D4AF37', enabled: true, order: 4 },
@@ -4303,7 +4304,7 @@ app.post('/api/pending-approvals/approve', verifyAdminAuth, async (req, res) => 
     if (token) {
       try {
         const appUrl = getTelegramAppUrl();
-        const approvalMsg = `💎 *Félicitations\\! Votre accès VIP à TRICOME LABZ a été activé\\!*\n\nVous pouvez dès à présent ouvrir le Shop et découvrir notre catalogue exclusif\\.`;
+        const approvalMsg = `💎 *Félicitations\\! Votre accès VIP à LOST IN THE RIF a été activé\\!*\n\nVous pouvez dès à présent ouvrir le Shop et découvrir notre catalogue exclusif\\.`;
         
         const payload = {
           chat_id: telegramId,
@@ -4939,10 +4940,10 @@ async function sendInstagramPromoMessage(chatId: string | number): Promise<{ suc
 
   const appUrl = 'https://biscotti-boys-app.vercel.app';
   const channelLink = 'https://t.me/+bMAog56A3AthODM0';
-  const defaultText = `💎 TRICOME LABZ — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
+  const defaultText = `💎 LOST IN THE RIF — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
   let promoMessage = defaultText;
   let promoBtnLabel = "🛒 Accéder au Shop 🛍️";
-  let promoImageUrl = "/tricome_labz_welcome.jpg";
+  let promoImageUrl = "/lost_in_the_rif_welcome.jpg";
 
   try {
     const freshSettings = loadSettingsFromDisk();
@@ -4967,7 +4968,7 @@ async function sendInstagramPromoMessage(chatId: string | number): Promise<{ suc
         chat_id: Number(chatId),
         menu_button: {
           type: 'web_app',
-          text: '🛍️ TRICOME LABZ',
+          text: '🛍️ LOST IN THE RIF',
           web_app: { url: appUrl }
         }
       })
@@ -5297,7 +5298,7 @@ async function processTelegramUpdate(body: any, source: string = 'polling') {
           console.warn('[TELEGRAM BOT] Failed to load logo settings.', settingsErr);
         }
 
-        const welcomeText = `💎 TRICOME LABZ — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
+        const welcomeText = `💎 LOST IN THE RIF — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.\n\n✨ BIENVENUE DANS NOTRE ESPACE OFFICIEL\n\n📢 Canal Officiel : ${channelLink}\n💬 Support Client\n\n👉 Cliquez ci-dessous sur « 🛒 Accéder au Shop » pour ouvrir le shop directement.`;
 
         // Configure user's personal chat menu button directly to active appUrl
         if (!isMenuButtonMethodFrozen) {
@@ -5308,7 +5309,7 @@ async function processTelegramUpdate(body: any, source: string = 'polling') {
               chat_id: Number(chatId),
               menu_button: {
                 type: 'web_app',
-                text: '🛍️ TRICOME LABZ',
+                text: '🛍️ LOST IN THE RIF',
                 web_app: { url: appUrl }
               }
             })
@@ -5344,9 +5345,9 @@ async function processTelegramUpdate(body: any, source: string = 'polling') {
 
         // 1. Try sending local bot emblem photo via multipart FormData directly to Telegram
         const candidateLogoPaths = [
+          path.join(process.cwd(), 'public', 'lost_in_the_rif_welcome.jpg'),
           path.join(process.cwd(), 'public', 'tricome_labz_welcome.jpg'),
           path.join(process.cwd(), 'public', 'tricoma_logo.jpg'),
-          path.join(process.cwd(), 'public', 'logo.png'),
           path.join(process.cwd(), 'public', 'logo.png')
         ];
         const localLogoPath = candidateLogoPaths.find(p => fs.existsSync(p));
@@ -5380,9 +5381,9 @@ async function processTelegramUpdate(body: any, source: string = 'polling') {
 
         // 2. Fallback to URL-based sendPhoto if FormData didn't succeed
         if (!photoSucceeded) {
-          const fallbackPhotoUrl = (logoUrl && logoUrl.startsWith('http')) 
+          const fallbackPhotoUrl = (logoUrl && logoUrl.startsWith('http') && !logoUrl.includes('47e9c1b0')) 
             ? logoUrl 
-            : `${appUrl}/tricoma_logo.jpg`;
+            : `${appUrl}/lost_in_the_rif_welcome.jpg`;
           try {
             const photoPayload = {
               chat_id: chatId,
@@ -5943,9 +5944,9 @@ async function setupTelegramWebhook() {
 
 async function ensureTelegramBotProfileIsClean(token: string) {
   if (!token) return;
-  const officialName = 'TRICOME LABZ';
-  const officialDesc = "💎 TRICOME LABZ — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.";
-  const officialShortDesc = "TRICOME LABZ — BOUTIQUE OFFICIELLE. Extractions & Fleurs d'exception.";
+  const officialName = 'LOST IN THE RIF';
+  const officialDesc = "💎 LOST IN THE RIF — BOUTIQUE OFFICIELLE 💎\nExtractions d'exception, sélections d'élite & catalogue VIP exclusif.";
+  const officialShortDesc = "LOST IN THE RIF — BOUTIQUE OFFICIELLE. Extractions & Fleurs d'exception.";
   const langCodes = ['', 'fr', 'en', 'es', 'de', 'ar', 'ru', 'it', 'pt'];
 
   try {

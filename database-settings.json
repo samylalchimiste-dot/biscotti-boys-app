@@ -1,101 +1,101 @@
 {
-  "telegramChannelUrl": "https://t.me/+bMAog56A3AthODM0",
-  "promoImageUrl": "/tricoma_logo.jpg",
-  "logoUrl": "/tricome_labz_welcome.jpg",
-  "promoButtonText": "Boutique 🛍️",
-  "launchScreenUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Faef0625a-e45e-4464-be0f-3fb16ab2e026.jpg?alt=media&token=5d6970df-7d41-4066-9fb9-8af6d136d13d",
-  "appDisabled": false,
   "telegramSupportUrl": "https://t.me/BISCOTTIBOY10",
-  "promoMessageText": "🚨 NEW DROP EST DISPONIBLE 🚨\n\nLes nouvelles références sont arrivées. 👀🔥\n\n📲 La mini-application est opérationnelle pour passer vos commandes.\nAppuyez sur 🛒 Shop pour y accéder directement.\n\n⚠️ Si vous n’avez pas encore accès, envoyez votre ID en privé afin d’être ajouté à la liste d’accès.\n@BISCOTTIBOY10\n\nBonne découverte à tous. 💨",
+  "logoUrl": "/lost_in_the_rif_welcome.jpg",
+  "appDisabled": false,
+  "signalUrl": "https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa",
+  "launchScreenUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2Faef0625a-e45e-4464-be0f-3fb16ab2e026.jpg?alt=media&token=5d6970df-7d41-4066-9fb9-8af6d136d13d",
   "introVideoUrl": "",
-  "homepageHeroBgUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F55ed60de-7693-49a9-941f-9a8eb52f9b87.jpg?alt=media&token=95d1c493-7abf-42f9-aee1-ad94b6b486f5",
-  "bgLogoUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F426716f8-56aa-42cf-a478-9564043007a1.jpg?alt=media&token=c63bd9eb-f53c-4a09-93c7-8b7ecdf81ca8",
+  "introStatusLine": "LOST IN THE RIF — BOUTIQUE OFFICIELLE",
+  "customAppUrl": "https://biscotti-boys-app.vercel.app",
+  "instagramUrl": "",
   "sectionTitles": [
     {
-      "order": 1,
-      "color": "#D4AF37",
-      "id": "1",
-      "text": "TRICOME LABZ",
+      "category": "All",
       "enabled": true,
       "size": "L",
-      "category": "All"
+      "text": "LOST IN THE RIF",
+      "color": "#D4AF37",
+      "order": 1,
+      "id": "1"
     },
     {
-      "text": "SELECTION LA MOUSSE",
+      "size": "L",
+      "enabled": true,
+      "color": "#D4AF37",
       "category": "LA MOUSSE",
       "id": "2",
-      "enabled": true,
-      "order": 2,
-      "color": "#D4AF37",
-      "size": "L"
+      "text": "SELECTION LA MOUSSE",
+      "order": 2
     },
     {
-      "order": 3,
       "color": "#D4AF37",
+      "size": "L",
+      "order": 3,
+      "category": "DRY SIFT",
       "text": "SELECTION DRY SIFT",
       "enabled": true,
-      "category": "DRY SIFT",
-      "id": "3",
-      "size": "L"
+      "id": "3"
     },
     {
-      "size": "L",
+      "order": 4,
+      "text": "SELECTION BELDIA",
+      "color": "#D4AF37",
       "category": "BELDIA",
       "id": "4",
-      "text": "SELECTION BELDIA",
-      "enabled": true,
-      "color": "#D4AF37",
-      "order": 4
-    },
-    {
-      "category": "FROZEN",
-      "size": "L",
-      "id": "5",
-      "color": "#D4AF37",
-      "enabled": true,
-      "order": 5,
-      "text": "SELECTION FROZEN"
-    },
-    {
-      "order": 6,
-      "color": "#D4AF37",
-      "category": "STATIC",
-      "text": "SELECTION STATIC",
-      "enabled": true,
-      "id": "6",
-      "size": "L"
-    },
-    {
-      "category": "WPFF",
-      "id": "7",
-      "text": "SELECTION WPFF",
-      "enabled": true,
-      "order": 7,
-      "color": "#D4AF37",
-      "size": "L"
-    },
-    {
-      "id": "8",
-      "text": "MEET UP RABAT",
-      "category": "MEET UP RABAT",
-      "order": 8,
-      "color": "#D4AF37",
       "size": "L",
       "enabled": true
     },
     {
       "size": "L",
-      "id": "9",
       "enabled": true,
-      "order": 9,
-      "category": "ACCESSOIRES",
+      "text": "SELECTION FROZEN",
       "color": "#D4AF37",
-      "text": "ACCESSOIRES"
+      "category": "FROZEN",
+      "order": 5,
+      "id": "5"
+    },
+    {
+      "text": "SELECTION STATIC",
+      "category": "STATIC",
+      "id": "6",
+      "enabled": true,
+      "order": 6,
+      "size": "L",
+      "color": "#D4AF37"
+    },
+    {
+      "id": "7",
+      "size": "L",
+      "color": "#D4AF37",
+      "text": "SELECTION WPFF",
+      "enabled": true,
+      "category": "WPFF",
+      "order": 7
+    },
+    {
+      "size": "L",
+      "id": "8",
+      "text": "MEET UP RABAT",
+      "color": "#D4AF37",
+      "enabled": true,
+      "category": "MEET UP RABAT",
+      "order": 8
+    },
+    {
+      "order": 9,
+      "enabled": true,
+      "color": "#D4AF37",
+      "category": "ACCESSOIRES",
+      "text": "ACCESSOIRES",
+      "id": "9",
+      "size": "L"
     }
   ],
+  "bgLogoUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F426716f8-56aa-42cf-a478-9564043007a1.jpg?alt=media&token=c63bd9eb-f53c-4a09-93c7-8b7ecdf81ca8",
+  "telegramChannelUrl": "https://t.me/+bMAog56A3AthODM0",
+  "promoImageUrl": "/lost_in_the_rif_welcome.jpg",
+  "promoMessageText": "🚨 NEW DROP EST DISPONIBLE 🚨\n\nLes nouvelles références sont arrivées. 👀🔥\n\n📲 La mini-application est opérationnelle pour passer vos commandes.\nAppuyez sur 🛒 Shop pour y accéder directement.\n\n⚠️ Si vous n’avez pas encore accès, envoyez votre ID en privé afin d’être ajouté à la liste d’accès.\n@BISCOTTIBOY10\n\nBonne découverte à tous. 💨",
+  "homepageHeroBgUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F55ed60de-7693-49a9-941f-9a8eb52f9b87.jpg?alt=media&token=95d1c493-7abf-42f9-aee1-ad94b6b486f5",
   "introBgUrl": "https://firebasestorage.googleapis.com/v0/b/gen-lang-client-0292552802.firebasestorage.app/o/uploads%2F75930d3a-7f36-4a0f-b0dc-47b7c2f0f35a.jpg?alt=media&token=c13b5a92-67cb-491d-99fe-0f6b7db02724",
-  "instagramUrl": "",
-  "introStatusLine": "TRICOME LABZ — BOUTIQUE OFFICIELLE",
-  "signalUrl": "https://signal.me/#eu/w6NQMTq58RhypsehbArfwBE8e6-MEK-eVR00xyjQk5HJmVv06d9BVLnw6fW-poXa",
-  "customAppUrl": "https://biscotti-boys-app.vercel.app"
+  "promoButtonText": "Boutique 🛍️"
 }
